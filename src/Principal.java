@@ -25,13 +25,15 @@ public class Principal {
 
 	private static Jugador[] crearJugadores(int numeroJugadores, int edad, Equipo equipo) {
 		//Listado de Nombres, Apellidos, Posiciones para generador random
+
+
 		String[] nombres = {"Antonio", "Pepito", "Alejandra", "Ismael", "Hugo", "Oliver","Kalesi",
 				"Ingrid","Astrid","Indira","Jenny","Jessi","Vane","Joel","Bruno",
 				"Sasha","Billie","Masha","Pingu"};
 		String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Piqué","Bale (lesionado)",
 				"Amunike","N'kono","Butragueño","Sanchís","Neymar","Batistuta","Maradona",
 				"Pelé","Beckenbauer"};
-		String[] posiciones = {"Portero/a","Defensa","Centrocampista","Delantero/a"};
+		String[] posiciones = {"Portero","Defensa","Centrocampista","Delantero"};
 		
 		//Estructura de Array de Jugadores
 		Jugador[] jugadores = new Jugador[numeroJugadores];
@@ -74,13 +76,9 @@ public class Principal {
 
 	private static Equipo[] crearEquipos(int numeroEquipos,int edad) {
 		
-		String [] nombreBarrios = {"El Candado", "Huelin", "Tiro Pichón", "Rincón de la Victoria", "La Rosaleda", "Torremolinos",
-				"Velez Málaga","Cerrado de Calderon", "El Puerto de la Torre", "Bresca", "Mezquitilla", "Teatinos", "Motril",
-				"Centro","Santa Paula", "El Palo", "Los Corazones", "Las Delicias", "Recogidas","Nueva Málaga", "Casas Blancas",
-				"La Palmilla","Los Asperones","Campanillas","La Corta"};
-		String [] mascotas = {"Los Pollos", "Los Araclanes", "Los Limones", "Los Delfines", "Los Chanquetes", "Los Gatitos",
-								"Los Boquerones", "Los Toros", "Los Perritos", "Los Halcones", "Los Ornitorrincos", "Los Caracoles",
-								"Los Palomos Cojos", "Los Heterosaurios", "Las Tortugas Ninjas", "Los Pintarrojas"};
+		String [] nombreEquipos = {"Real Madrid", "Sevilla", "Betis", "Atlético de Madrid", "Barcelona", "Real Sociedad",
+				"Villarreal","Rayo Vallecano", "Athletic de Bilbao", "Valencia C.F.", "Osasuna", "Celta de Vigo", "RCD Espanyol",
+				"Granada","Elche C.F.", "Getafe", "R.C.D Mallorca", "Cádiz", "Alavés","Levante"};
 
 		Equipo [] listaEquipos= new Equipo[numeroEquipos];
 		
@@ -91,24 +89,15 @@ public class Principal {
 
 			
 			//Elegimos random un nombre y una mascota de las listas respectivas.
-			int numero = (int) Math.floor(Math.random()*nombreBarrios.length);
-			String barrio= nombreBarrios[numero];
-			numero = (int) Math.floor(Math.random()*mascotas.length);
-			String mascota= mascotas[numero];
+			int numero = (int) Math.floor(Math.random()*nombreEquipos.length);
+			String barrio= nombreEquipos[numero];
+
 
 			//Definimos el club en base al nombre del barrio
 			equipo.setClub(barrio+" F.C.");
-			
+
 			//Las pegamos con un "de" en medio
-			String nombre;
-			if (barrio.startsWith("El ")) {
-				barrio=barrio.substring(3);
-				nombre = mascota + " del "+ barrio;
-			}else {
-				nombre = mascota + " de "+ barrio;
-			}
-			
-			equipo.setNombre(nombre);
+
 			//Continuamos con entrenador
 			Entrenador entrenador = crearEntrenador(equipo);
 			equipo.setEntrenador(entrenador);
