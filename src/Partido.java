@@ -1,4 +1,4 @@
 public class Partido {
-    private int FechaPartido;
-    private
+    public int FechaPartido;
+
 }
