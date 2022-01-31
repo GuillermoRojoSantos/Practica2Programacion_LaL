@@ -16,7 +16,8 @@ public class Principal {
 		for (Equipo e: listaEquipos) {
 			System.out.println(e.getNombre());
 		}
-		
+
+
 
 		
 
@@ -162,5 +163,17 @@ public class Principal {
 		entrenador.setNumeroLicencia(licencia);
 		
 		return entrenador;
+	}
+
+	private static Liga[] crearLiga(){
+		Liga ligaBBVA=new Liga();
+		ligaBBVA.setLigaNombre("BBVA");
+		ligaBBVA.setEquipos( crearEquipos(10,10));
+
+
+
+
+
+
 	}
 }
