@@ -31,7 +31,14 @@ public class Partido {
 	public void setfecha(String fecha) {
 		this.fecha = fecha;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Partido{" +
+				"equipoLocal=" + equipoLocal +
+				", equipoVisitante=" + equipoVisitante +
+				", arbitro=" + arbitro +
+				", fecha='" + fecha + '\'' +
+				'}';
+	}
 }

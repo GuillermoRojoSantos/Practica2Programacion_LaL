@@ -17,6 +17,9 @@ public class Principal {
 			System.out.println(e.getNombre());
 		}*/
 
+
+		 crearPartido();
+
 		
 	
 		
@@ -178,5 +181,20 @@ public class Principal {
 
 
 	}*/
-	private static Partido 
+	private static Partido crearPartido(Equipo equipoLocal, Equipo equipoVisitante, Arbitro arbitro, String fecha){
+
+		Partido partido= new Partido();
+		partido.setEquipoLocal(equipoLocal);
+		partido.setEquipoVisitante(equipoVisitante);
+		partido.setArbitro(arbitro);
+
+		partido.setfecha(fecha);
+
+		return partido;
+
+
+
+
+	}
+
 }
