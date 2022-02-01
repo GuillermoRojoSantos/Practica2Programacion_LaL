@@ -35,9 +35,9 @@ public class Partido {
 	@Override
 	public String toString() {
 		return "Partido{" +
-				"equipoLocal=" + equipoLocal +
-				", equipoVisitante=" + equipoVisitante +
-				", arbitro=" + arbitro +
+				"equipoLocal=" + equipoLocal.getNombre() +
+				", equipoVisitante=" + equipoVisitante.getNombre() +
+				", arbitro=" + arbitro.getNombre() +
 				", fecha='" + fecha + '\'' +
 				'}';
 	}

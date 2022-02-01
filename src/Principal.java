@@ -7,9 +7,9 @@ public class Principal {
 		
 		//Crear una Lista de Equipo
 		
-		int edad = (int) Math.floor(Math.random()*15)+4;
+		/*int edad = (int) Math.floor(Math.random()*15)+4;
 		int numeroEquipos = (int) Math.floor(Math.random()*13)+4;
-		Equipo[] listaEquipos = crearEquipos(numeroEquipos, edad);
+		Equipo[] listaEquipos = crearEquipos(numeroEquipos, edad);*/
 		
 		//Imprimimos los equipos
 		/*System.out.println("Numero de equipos: "+numeroEquipos);
@@ -17,8 +17,26 @@ public class Principal {
 			System.out.println(e.getNombre());
 		}*/
 
+		Equipo equipoLocal= new Equipo();
+		equipoLocal.setNombre("Barcelona");
+		Equipo equipoVisitante= new Equipo();
+		equipoVisitante.setNombre("Real Madrid");
+		Arbitro arbitro = new Arbitro();
+		arbitro.setNombre("Martinez munuera");
+		String fecha= "12 de mayo";
+		
+		Partido partido= new Partido();
+		partido.setEquipoLocal(equipoLocal);
+		partido.setEquipoVisitante(equipoVisitante);
+		partido.setArbitro(arbitro);
 
-		 crearPartido();
+		partido.setfecha(fecha);
+		
+		System.out.println(partido.toString());
+		
+		
+		
+		
 
 		
 	
@@ -189,7 +207,7 @@ public class Principal {
 		partido.setArbitro(arbitro);
 
 		partido.setfecha(fecha);
-
+		
 		return partido;
 
 
