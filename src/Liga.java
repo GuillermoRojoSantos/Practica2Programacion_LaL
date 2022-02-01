@@ -1,5 +1,6 @@
+import java.util.Arrays;
 
-public class Liga extends Arbitro{
+public class Liga {
 	
 	private String nombre;
 	private Equipo[] equipos;
@@ -21,4 +22,21 @@ public class Liga extends Arbitro{
 	public void setEquipos(Equipo[] equipos) {
 		this.equipos = equipos;
 	}
+	
+	public String toStringEquipos(Equipo[] equipos) {
+		
+		String listaEquipos="";
+		for(Equipo e:equipos ) {
+			listaEquipos+=e.getNombre()+"\n";
+		}
+		return listaEquipos;
+	
+		
+	}
+	@Override
+	public String toString() {
+		return "Nombre Liga: " + nombre +"\n" +"Equipos: "+ "\n" + toStringEquipos(this.equipos);
+	}
+	
+	
 }

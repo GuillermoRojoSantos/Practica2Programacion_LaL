@@ -12,13 +12,13 @@ public class Principal {
 		Equipo[] listaEquipos = crearEquipos(numeroEquipos, edad);
 		
 		//Imprimimos los equipos
-		System.out.println("Numero de equipos: "+numeroEquipos);
+		/*System.out.println("Numero de equipos: "+numeroEquipos);
 		for (Equipo e: listaEquipos) {
 			System.out.println(e.getNombre());
-		}
+		}*/
 
-
-
+		
+	
 		
 
 
@@ -165,15 +165,18 @@ public class Principal {
 		return entrenador;
 	}
 
-	private static Liga[] crearLiga(){
-		Liga ligaBBVA=new Liga();
-		ligaBBVA.setLigaNombre("BBVA");
-		ligaBBVA.setEquipos( crearEquipos(10,10));
+	/*private static Liga[] crearLiga(){
+			Liga ligaFutbol=new Liga();
+		ligaFutbol.setLigaNombre("BBVA");
+		ligaFutbol.setEquipos(crearEquipos(10,10));
+		
+		System.out.println(ligaFutbol.toString());
 
 
 
 
 
 
-	}
+	}*/
+	private static Partido 
 }
