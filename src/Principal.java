@@ -22,7 +22,7 @@ public class Principal {
 		Equipo equipoVisitante= new Equipo();
 		equipoVisitante.setNombre("Real Madrid");
 		Arbitro arbitro = new Arbitro();
-		arbitro.setNombre("Martinez munuera");
+		arbitro.setNombre("Martinez Munuera");
 		String fecha= "12 de mayo";
 		
 		Partido partido= new Partido();
@@ -96,10 +96,10 @@ public class Principal {
 
 	private static Equipo[] crearEquipos(int numeroEquipos,int edad) {
 		
-		String [] nombreBarrios = {"El Candado", "Huelin", "Tiro Pichón", "Rincón de la Victoria", "La Rosaleda", "Torremolinos",
-				"Velez Málaga","Cerrado de Calderon", "El Puerto de la Torre", "Bresca", "Mezquitilla", "Teatinos", "Motril",
-				"Centro","Santa Paula", "El Palo", "Los Corazones", "Las Delicias", "Recogidas","Nueva Málaga", "Casas Blancas",
-				"La Palmilla","Los Asperones","Campanillas","La Corta"};
+		String [] nombreEquipos = {"Real Madrid", "Sevilla", "Betis", "Atl�tico de Madrid", "Barcelona", "Real Sociedad",
+				"Villarreal","Rayo Vallecano", "Athletic de Bilbao", "Valencia C.F.", "Osasuna", "Celta de Vigo", "RCD Espanyol",
+				"Granada","Elche C.F.", "Getafe", "R.C.D Mallorca", "C�diz", "Alav�s","Levante"};
+		
 		String [] mascotas = {"Los Pollos", "Los Araclanes", "Los Limones", "Los Delfines", "Los Chanquetes", "Los Gatitos",
 								"Los Boquerones", "Los Toros", "Los Perritos", "Los Halcones", "Los Ornitorrincos", "Los Caracoles",
 								"Los Palomos Cojos", "Los Heterosaurios", "Las Tortugas Ninjas", "Los Pintarrojas"};
@@ -113,8 +113,8 @@ public class Principal {
 
 			
 			//Elegimos random un nombre y una mascota de las listas respectivas.
-			int numero = (int) Math.floor(Math.random()*nombreBarrios.length);
-			String barrio= nombreBarrios[numero];
+			int numero = (int) Math.floor(Math.random()*nombreEquipos.length);
+			String barrio= nombreEquipos[numero];
 			numero = (int) Math.floor(Math.random()*mascotas.length);
 			String mascota= mascotas[numero];
 
