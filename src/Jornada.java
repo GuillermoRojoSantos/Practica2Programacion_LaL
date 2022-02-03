@@ -5,7 +5,7 @@ public class Jornada {
 	private Partido [] partidos;
 	private  int numJornada;
 	private  String duracionJornada;
-	private  String horaJuego;
+
 
 	public Partido[] getPartidos() {
 		return partidos;
@@ -31,21 +31,14 @@ public class Jornada {
 		this.duracionJornada = duracionJornada;
 	}
 
-	public String getHoraJuego() {
-		return horaJuego;
-	}
 
-	public void setHoraJuego(String horaJuego) {
-		this.horaJuego = horaJuego;
-	}
 
 	@Override
 	public String toString() {
 		return "Jornada{" +
 				"partidos=" + Arrays.toString(partidos) +
 				", numJornada=" + numJornada +
-				", duracionJornada='" + duracionJornada + '\'' +
-				", horaJuego='" + horaJuego + '\'' +
-				'}';
+				", duracionJornada='" + duracionJornada + '\''
+				;
 	}
 }

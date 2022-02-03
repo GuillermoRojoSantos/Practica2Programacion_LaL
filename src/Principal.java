@@ -24,22 +24,15 @@ public class Principal {
 		Arbitro arbitro = new Arbitro();
 		arbitro.setNombre("Martinez Munuera");
 		String fecha= "12 de mayo";
-		
-		Partido partido= new Partido();
-		partido.setEquipoLocal(equipoLocal);
-		partido.setEquipoVisitante(equipoVisitante);
-		partido.setArbitro(arbitro);
 
-		partido.setfecha(fecha);
-		
-		System.out.println(partido.toString());
-		
-		
+
+		for (Partido p: crearPartido(equipoLocal,equipoVisitante,arbitro,2,fecha,"19:00")) System.out.println(p);
+
 		
 		
 
 		
-	
+
 		
 
 
@@ -93,6 +86,7 @@ public class Principal {
 		
 		return jugadores;
 	}
+
 
 	private static Equipo[] crearEquipos(int numeroEquipos,int edad) {
 		
@@ -199,21 +193,54 @@ public class Principal {
 
 
 	}*/
-	private static Partido crearPartido(Equipo equipoLocal, Equipo equipoVisitante, Arbitro arbitro, String fecha){
+	private static Partido[] crearPartido(Equipo equipoLocal, Equipo equipoVisitante, Arbitro arbitro, int numPartidos, String fecha, String horaJuego){
 
-		Partido partido= new Partido();
+		Partido [] listaPartidos= new Partido[numPartidos];
+
+		for(int i=0;i<2;i++){
+
+			Partido partido= new Partido();
+			partido.setEquipoLocal(equipoLocal);
+			partido.setEquipoVisitante(equipoVisitante);
+			partido.setfecha(fecha);
+			partido.setHoraJuego(horaJuego);
+			partido.setArbitro(arbitro);
+
+			listaPartidos[i]=partido;
+
+		}
+
+
+
+
+
+	/*	Partido partido= new Partido();
 		partido.setEquipoLocal(equipoLocal);
 		partido.setEquipoVisitante(equipoVisitante);
 		partido.setArbitro(arbitro);
-
 		partido.setfecha(fecha);
+		partido.setHoraJuego(horaJuego);*/
+
+
 		
-		return partido;
+		return listaPartidos;
 
 
 
 
 	}
 
-	private static Jornada crearJornada(Partido[] partidos, )
+
+	private static Jornada crearJornada(Partido[] partidos, int numJornada, String duracionJornada){
+
+		Jornada jornada=new Jornada();
+		jornada.setPartidos(partidos);
+		jornada.setNumJornada(numJornada);
+
+
+		return jornada;
+
+	}
+
+
 }
