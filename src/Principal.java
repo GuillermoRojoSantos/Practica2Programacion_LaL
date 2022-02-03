@@ -16,7 +16,7 @@ public class Principal {
 		for (Equipo e: listaEquipos) {
 			System.out.println(e.getNombre());
 		}*/
-
+/*probamos creacion de partido*/
 		Equipo equipoLocal= new Equipo();
 		equipoLocal.setNombre("Barcelona");
 		Equipo equipoVisitante= new Equipo();
@@ -96,9 +96,9 @@ public class Principal {
 
 	private static Equipo[] crearEquipos(int numeroEquipos,int edad) {
 		
-		String [] nombreEquipos = {"Real Madrid", "Sevilla", "Betis", "Atlético de Madrid", "Barcelona", "Real Sociedad",
+		String [] nombreEquipos = {"Real Madrid", "Sevilla", "Betis", "AtlÃ©tico de Madrid", "Barcelona", "Real Sociedad",
 				"Villarreal","Rayo Vallecano", "Athletic de Bilbao", "Valencia C.F.", "Osasuna", "Celta de Vigo", "RCD Espanyol",
-				"Granada","Elche C.F.", "Getafe", "R.C.D Mallorca", "Cádiz", "Alavés","Levante"};
+				"Granada","Elche C.F.", "Getafe", "R.C.D Mallorca", "CÃ¡diz", "AlavÃ©s","Levante"};
 		
 		String [] mascotas = {"Los Pollos", "Los Araclanes", "Los Limones", "Los Delfines", "Los Chanquetes", "Los Gatitos",
 								"Los Boquerones", "Los Toros", "Los Perritos", "Los Halcones", "Los Ornitorrincos", "Los Caracoles",
@@ -215,4 +215,5 @@ public class Principal {
 
 	}
 
+	private static Jornada crearJornada(Partido[] partidos, )
 }

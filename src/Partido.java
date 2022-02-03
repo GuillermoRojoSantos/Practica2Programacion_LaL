@@ -34,10 +34,10 @@ public class Partido {
 
 	@Override
 	public String toString() {
-		return "Partido"+" "+"\n"+ "Fecha"+" " +fecha+
-				"\n"+"Equipo Local " + equipoLocal.getNombre()+" VS " +
+		return "Partido:"+" "+"\n"+ "Fecha:"+" " +fecha+
+				"\n"+"Equipo Local: " + equipoLocal.getNombre()+" VS " +
 				 equipoVisitante.getNombre() +" Equipo Visitante"  +
-				"\n"+ "¡rbitro: " + arbitro.getNombre()   
+				"\n"+ "√Årbitro: " + arbitro.getNombre()
 				;
 	}
 }
