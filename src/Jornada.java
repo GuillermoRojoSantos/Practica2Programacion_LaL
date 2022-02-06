@@ -35,10 +35,9 @@ public class Jornada {
 
 	@Override
 	public String toString() {
-		return "Jornada{" +
-				"partidos=" + Arrays.toString(partidos) +
-				", numJornada=" + numJornada +
-				", duracionJornada='" + duracionJornada + '\''
+		return "Jornada "+getNumJornada() +
+				  Arrays.toString(partidos) +
+				", duracionJornada='" + duracionJornada + "\n"
 				;
 	}
 }

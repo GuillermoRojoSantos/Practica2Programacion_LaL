@@ -17,16 +17,20 @@ public class Principal {
 			System.out.println(e.getNombre());
 		}*/
 /*probamos creacion de partido*/
-		Equipo equipoLocal= new Equipo();
-		equipoLocal.setNombre("Barcelona");
-		Equipo equipoVisitante= new Equipo();
-		equipoVisitante.setNombre("Real Madrid");
-		Arbitro arbitro = new Arbitro();
-		arbitro.setNombre("Martinez Munuera");
-		String fecha= "12 de mayo";
-
-
-		for (Partido p: crearPartido(equipoLocal,equipoVisitante,arbitro,2,fecha,"19:00")) System.out.println(p);
+//		Equipo equipoLocal= new Equipo();
+//		equipoLocal.setNombre("Barcelona");
+//		Equipo equipoVisitante= new Equipo();
+//		equipoVisitante.setNombre("Real Madrid");
+//		Arbitro arbitro = new Arbitro();
+//		arbitro.setNombre("Martinez Munuera");
+//		String fecha= "12 de mayo";
+//
+//
+//		for (Partido p: crearPartido(equipoLocal,equipoVisitante,arbitro,5,fecha,"19:00")) System.out.println(p+"\n");
+		
+		for(Jornada j: crearJornada(10,"3 dias")) {
+			System.out.println(j+"\n");
+		}
 
 		
 		
@@ -196,8 +200,9 @@ public class Principal {
 	private static Partido[] crearPartido(Equipo equipoLocal, Equipo equipoVisitante, Arbitro arbitro, int numPartidos, String fecha, String horaJuego){
 
 		Partido [] listaPartidos= new Partido[numPartidos];
+		
 
-		for(int i=0;i<2;i++){
+		for(int i=0;i<numPartidos;i++){
 
 			Partido partido= new Partido();
 			partido.setEquipoLocal(equipoLocal);
@@ -231,14 +236,40 @@ public class Principal {
 	}
 
 
-	private static Jornada crearJornada(Partido[] partidos, int numJornada, String duracionJornada){
+	private static Jornada [] crearJornada( int cantJornada, String duracionJornada){
+		
+//		Partido [] partido= new Partido[1]; 
+		Equipo equipoLocal= new Equipo();
+		equipoLocal.setNombre("Barcelona");
+		Equipo equipoVisitante= new Equipo();
+		equipoVisitante.setNombre("Real Madrid");
+		Arbitro arbitro = new Arbitro();
+		arbitro.setNombre("Martinez Munuera");
+		String fecha= "12 de mayo";
+		
+		int numJornada=10;
+		
+		
+		
+		
+		Jornada[] listaJornada= new Jornada [cantJornada];
+		
+		for(int i=0;i<cantJornada;i++) {
+			Jornada jornada=new Jornada();
+			Partido[] partido= crearPartido(equipoLocal,equipoVisitante,arbitro,5,"8 de mayo","18:00");
+			jornada.setPartidos(partido);
+			jornada.setNumJornada(numJornada);
+			jornada.setDuracionJornada(duracionJornada);
+			numJornada++;
+			
+			
+			listaJornada[i]=jornada;
+		}
+		
+		
 
-		Jornada jornada=new Jornada();
-		jornada.setPartidos(partidos);
-		jornada.setNumJornada(numJornada);
 
-
-		return jornada;
+		return listaJornada;
 
 	}
 

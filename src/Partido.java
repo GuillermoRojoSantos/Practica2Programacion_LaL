@@ -44,7 +44,7 @@ public class Partido {
 		return "Partido:"+" "+"\n"+ "Fecha:"+" " +fecha+
 				"\n"+"Equipo Local: " + equipoLocal.getNombre()+" VS " +
 				 equipoVisitante.getNombre() +" Equipo Visitante"  +
-				"\n"+ "Árbitro: " + arbitro.getNombre()+" \n"+"Hora juego"+horaJuego;
+				"\n"+ "Arbitro: " + arbitro.getNombre()+" \n"+"Hora juego "+horaJuego+"\n";
 
 	}
 }
