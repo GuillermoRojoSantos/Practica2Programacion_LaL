@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class Partido {
 
@@ -41,10 +42,12 @@ public class Partido {
 	}
 	@Override
 	public String toString() {
-		return "Partido:"+" "+"\n"+ "Fecha:"+" " +fecha+
-				"\n"+"Equipo Local: " + equipoLocal.getNombre()+" VS " +
-				 equipoVisitante.getNombre() +" Equipo Visitante"  +
-				"\n"+ "Arbitro: " + arbitro.getNombre()+" \n"+"Hora juego "+horaJuego+"\n";
-
+		return "EquipoLocal " + equipoLocal.getNombre()+" VS " +  equipoVisitante.getNombre()  +
+	          " equipoVisitante"+"\n" + "Arbitro " + arbitro.getNombre()
+				+"\n"+ "Fecha " + fecha + " horaJuego " + horaJuego+"\n"+"\n" ;
 	}
+	
+	
+	
+	
 }

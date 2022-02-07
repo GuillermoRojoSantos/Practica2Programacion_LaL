@@ -47,9 +47,9 @@ public class Principal {
 		String[] nombres = {"Antonio", "Pepito", "Alejandra", "Ismael", "Hugo", "Oliver","Kalesi",
 				"Ingrid","Astrid","Indira","Jenny","Jessi","Vane","Joel","Bruno",
 				"Sasha","Billie","Masha","Pingu"};
-		String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Piqué","Bale (lesionado)",
-				"Amunike","N'kono","Butragueño","Sanchís","Neymar","Batistuta","Maradona",
-				"Pelé","Beckenbauer"};
+		String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Pique","Bale (lesionado)",
+				"Amunike","N'kono","Butrague�o","Sanchis","Neymar","Batistuta","Maradona",
+				"Pele","Beckenbauer"};
 		String[] posiciones = {"Portero/a","Defensa","Centrocampista","Delantero/a"};
 		
 		//Estructura de Array de Jugadores
@@ -197,19 +197,27 @@ public class Principal {
 
 
 	}*/
-	private static Partido[] crearPartido(Equipo equipoLocal, Equipo equipoVisitante, Arbitro arbitro, int numPartidos, String fecha, String horaJuego){
+	private static Partido[] crearPartido(int numPartidos, String fecha, String horaJuego){
 
+		
+		
+		
 		Partido [] listaPartidos= new Partido[numPartidos];
 		
-
+		
 		for(int i=0;i<numPartidos;i++){
 
 			Partido partido= new Partido();
-			partido.setEquipoLocal(equipoLocal);
-			partido.setEquipoVisitante(equipoVisitante);
+			Equipo [] equipos= crearEquipos(2,10);
+			Arbitro arbitro=new Arbitro();
+			arbitro.setNombre("Felipe");
+			partido.setEquipoLocal(equipos[0]);
+			partido.setEquipoVisitante(equipos[1]);
 			partido.setfecha(fecha);
 			partido.setHoraJuego(horaJuego);
 			partido.setArbitro(arbitro);
+		
+			
 
 			listaPartidos[i]=partido;
 
@@ -239,14 +247,14 @@ public class Principal {
 	private static Jornada [] crearJornada( int cantJornada, String duracionJornada){
 		
 //		Partido [] partido= new Partido[1]; 
-		Equipo equipoLocal= new Equipo();
-		equipoLocal.setNombre("Barcelona");
-		Equipo equipoVisitante= new Equipo();
-		equipoVisitante.setNombre("Real Madrid");
-		Arbitro arbitro = new Arbitro();
-		arbitro.setNombre("Martinez Munuera");
-		String fecha= "12 de mayo";
-		
+//		Equipo equipoLocal= new Equipo();
+//		equipoLocal.setNombre("Barcelona");
+//		Equipo equipoVisitante= new Equipo();
+//		equipoVisitante.setNombre("Real Madrid");
+//		Arbitro arbitro = new Arbitro();
+//		arbitro.setNombre("Martinez Munuera");
+//		String fecha= "12 de mayo";
+//		
 		int numJornada=10;
 		
 		
@@ -256,7 +264,7 @@ public class Principal {
 		
 		for(int i=0;i<cantJornada;i++) {
 			Jornada jornada=new Jornada();
-			Partido[] partido= crearPartido(equipoLocal,equipoVisitante,arbitro,5,"8 de mayo","18:00");
+			Partido[] partido= crearPartido(2,"8 de mayo","18:00");
 			jornada.setPartidos(partido);
 			jornada.setNumJornada(numJornada);
 			jornada.setDuracionJornada(duracionJornada);
