@@ -7,6 +7,8 @@ public class Partido {
 	private Equipo equipoVisitante;
 	private Arbitro arbitro;
 	private String horaJuego;
+	private int golesLocal;
+	private int golesVisitante;
 	
 	
 	public Equipo getEquipoLocal() {
