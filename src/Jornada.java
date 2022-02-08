@@ -29,4 +29,3 @@ public class Jornada {
 		return "Jornada "+getNumJornada()+"\n" +
 				  Arrays.toString(partidos);
 	}
-}
