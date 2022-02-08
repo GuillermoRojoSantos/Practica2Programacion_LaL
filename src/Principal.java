@@ -7,15 +7,34 @@ public class Principal {
 		
 		//Crear una Lista de Equipo
 		
-		int edad = (int) Math.floor(Math.random()*15)+4;
+		/*int edad = (int) Math.floor(Math.random()*15)+4;
 		int numeroEquipos = (int) Math.floor(Math.random()*13)+4;
-		Equipo[] listaEquipos = crearEquipos(numeroEquipos, edad);
+		Equipo[] listaEquipos = crearEquipos(numeroEquipos, edad);*/
 		
 		//Imprimimos los equipos
-		System.out.println("Numero de equipos: "+numeroEquipos);
+		/*System.out.println("Numero de equipos: "+numeroEquipos);
 		for (Equipo e: listaEquipos) {
 			System.out.println(e.getNombre());
+		}*/
+/*probamos creacion de partido*/
+//		Equipo equipoLocal= new Equipo();
+//		equipoLocal.setNombre("Barcelona");
+//		Equipo equipoVisitante= new Equipo();
+//		equipoVisitante.setNombre("Real Madrid");
+//		Arbitro arbitro = new Arbitro();
+//		arbitro.setNombre("Martinez Munuera");
+//		String fecha= "12 de mayo";
+//
+//
+//		for (Partido p: crearPartido(equipoLocal,equipoVisitante,arbitro,5,fecha,"19:00")) System.out.println(p+"\n");
+		
+		for(Jornada j: crearJornada(3)) {
+			System.out.println(j+"\n");
 		}
+
+		
+		
+
 		
 
 		
@@ -28,9 +47,9 @@ public class Principal {
 		String[] nombres = {"Antonio", "Pepito", "Alejandra", "Ismael", "Hugo", "Oliver","Kalesi",
 				"Ingrid","Astrid","Indira","Jenny","Jessi","Vane","Joel","Bruno",
 				"Sasha","Billie","Masha","Pingu"};
-		String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Piqu√©","Bale (lesionado)",
-				"Amunike","N'kono","Butrague√±o","Sanch√≠s","Neymar","Batistuta","Maradona",
-				"Pel√©","Beckenbauer"};
+		String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Pique","Bale (lesionado)",
+				"Amunike","N'kono","ButragueÒo","Sanchis","Neymar","Batistuta","Maradona",
+				"Pele","Beckenbauer"};
 		String[] posiciones = {"Portero/a","Defensa","Centrocampista","Delantero/a"};
 		
 		//Estructura de Array de Jugadores
@@ -72,12 +91,13 @@ public class Principal {
 		return jugadores;
 	}
 
+
 	private static Equipo[] crearEquipos(int numeroEquipos,int edad) {
 		
-		String [] nombreBarrios = {"El Candado", "Huelin", "Tiro Pich√≥n", "Rinc√≥n de la Victoria", "La Rosaleda", "Torremolinos",
-				"Velez M√°laga","Cerrado de Calderon", "El Puerto de la Torre", "Bresca", "Mezquitilla", "Teatinos", "Motril",
-				"Centro","Santa Paula", "El Palo", "Los Corazones", "Las Delicias", "Recogidas","Nueva M√°laga", "Casas Blancas",
-				"La Palmilla","Los Asperones","Campanillas","La Corta"};
+		String [] nombreEquipos = {"Real Madrid", "Sevilla", "Betis", "Atletico de Madrid", "Barcelona", "Real Sociedad",
+				"Villarreal","Rayo Vallecano", "Athletic de Bilbao", "Valencia C.F.", "Osasuna", "Celta de Vigo", "RCD Espanyol",
+				"Granada","Elche C.F.", "Getafe", "R.C.D Mallorca", "Cadiz", "Alaves","Levante"};
+		
 		String [] mascotas = {"Los Pollos", "Los Araclanes", "Los Limones", "Los Delfines", "Los Chanquetes", "Los Gatitos",
 								"Los Boquerones", "Los Toros", "Los Perritos", "Los Halcones", "Los Ornitorrincos", "Los Caracoles",
 								"Los Palomos Cojos", "Los Heterosaurios", "Las Tortugas Ninjas", "Los Pintarrojas"};
@@ -91,8 +111,8 @@ public class Principal {
 
 			
 			//Elegimos random un nombre y una mascota de las listas respectivas.
-			int numero = (int) Math.floor(Math.random()*nombreBarrios.length);
-			String barrio= nombreBarrios[numero];
+			int numero = (int) Math.floor(Math.random()*nombreEquipos.length);
+			String barrio= nombreEquipos[numero];
 			numero = (int) Math.floor(Math.random()*mascotas.length);
 			String mascota= mascotas[numero];
 
@@ -163,4 +183,131 @@ public class Principal {
 		
 		return entrenador;
 	}
+
+	/*private static Liga[] crearLiga(){
+			Liga ligaFutbol=new Liga();
+		ligaFutbol.setLigaNombre("BBVA");
+		ligaFutbol.setEquipos(crearEquipos(10,10));
+		
+		System.out.println(ligaFutbol.toString());
+
+
+
+
+
+
+	}*/
+	private static Partido[] crearPartido(int numPartidos, String horaJuego){
+
+		
+		
+		
+		Partido [] listaPartidos= new Partido[numPartidos];
+		
+		
+		for(int i=0;i<numPartidos;i++){
+
+			Partido partido= new Partido();
+			Equipo [] equipos= crearEquipos(2,10);
+			Arbitro arbitro=crearArbitro();
+			partido.setEquipoLocal(equipos[0]);
+			
+			partido.setEquipoVisitante(equipos[1]);
+			partido.setHoraJuego(horaJuego);
+			partido.setArbitro(arbitro);
+			
+			
+		
+			
+
+			listaPartidos[i]=partido;
+
+		}
+
+
+
+
+
+	/*	Partido partido= new Partido();
+		partido.setEquipoLocal(equipoLocal);
+		partido.setEquipoVisitante(equipoVisitante);
+		partido.setArbitro(arbitro);
+		partido.setfecha(fecha);
+		partido.setHoraJuego(horaJuego);*/
+
+
+		
+		return listaPartidos;
+
+
+
+
+	}
+
+
+	private static Jornada [] crearJornada( int cantJornada){
+		
+//		Partido [] partido= new Partido[1]; 
+//		Equipo equipoLocal= new Equipo();
+//		equipoLocal.setNombre("Barcelona");
+//		Equipo equipoVisitante= new Equipo();
+//		equipoVisitante.setNombre("Real Madrid");
+//		Arbitro arbitro = new Arbitro();
+//		arbitro.setNombre("Martinez Munuera");
+//		String fecha= "12 de mayo";
+//		
+		int numJornada=10;
+		
+		
+		
+		
+		Jornada[] listaJornada= new Jornada [cantJornada];
+		
+		for(int i=0;i<cantJornada;i++) {
+			Jornada jornada=new Jornada();
+			Partido[] partido= crearPartido(2,"18:00");
+			jornada.setPartidos(partido);
+			jornada.setNumJornada(numJornada);
+			numJornada++;
+			
+			
+			listaJornada[i]=jornada;
+		}
+		
+		
+
+
+		return listaJornada;
+
+	}
+	private static Arbitro crearArbitro() {
+		String[] nombres = {"Antonio", "Pepito", "Adri·n", "Ismael", "Hugo", "Oliver","Kalesi",
+				"Ingrid","Astrid","Indira"};
+		String[] apellidos = {"Guzm·n", "S·nchez", "Munuera", "GarcÌa", "Gonz·lez","RodrÌguez",
+				"Fern·ndez","LÛpez","GÛmez","Moreno"};
+		
+		
+		
+		Arbitro arbitro= new Arbitro();
+		
+		
+		//Nombre
+				int numero = (int) Math.floor(Math.random()*nombres.length);
+				String nombre = nombres[numero];
+				arbitro.setNombre(nombre);
+				
+				//Apellidos
+				numero = (int) Math.floor(Math.random()*apellidos.length);
+				String apellido1 = apellidos[numero];
+				numero = (int) Math.floor(Math.random()*apellidos.length);
+				String apellido2 = apellidos[numero];
+				arbitro.setApellidos(apellido1+" "+apellido2);
+				
+				arbitro.setLicencia((int)Math.random()*100);
+				arbitro.setEdad((int)Math.random()*100);
+				
+				return arbitro;
+	}
+
+
 }
