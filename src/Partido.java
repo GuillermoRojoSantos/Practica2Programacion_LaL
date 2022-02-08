@@ -44,8 +44,3 @@ public class Partido {
 	          " equipoVisitante"+"\n" + "Arbitro " + arbitro.getNombre()+" "+arbitro.getApellidos()
 				+"\n" + " horaJuego " + horaJuego+"\n"+"\n" ;
 	}
-	
-	
-	
-	
-}
