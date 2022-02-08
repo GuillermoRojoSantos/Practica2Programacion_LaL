@@ -31,6 +31,8 @@ public class Calendario  {
 		    Partido[] partidosIda = new Partido[enfrentamientos.length];
 		    Partido[] partidosVuelta = new Partido[enfrentamientos.length];
 
+ //Enfrentamientos de la jornada 1 
+		    
 		    for (int j=0; j<enfrentamientos[0].length;j++) {
 		        partidosIda[i].setEquipoLocal(enfrentamientos[0][j]);
 		        partidosIda[i].setEquipoVisitante(enfrentamientos[1][j]);
@@ -44,7 +46,35 @@ public class Calendario  {
 		    jornadas[i+jornadas.length-1].setPartidos(partidosVuelta);
 		    
 		    
-		    //Mover la tabla de enfrentamientos
+ //Mover la tabla de enfrentamientos JORNADA 2
+		 
+		    //mitad izquierda
+			for (int j=0;j<equipos.length/2;j++ ) {
+				if(j==1) {
+					enfrentamientos[0][1]=equipos[equipos.length-j];
+					
+				}else {
+			    enfrentamientos[0][j]=equipos[j];
+				}
+			}
+			//mitad derecha
+			for (int k=equipos.length/2-1;k>=0;k--) {
+			    enfrentamientos[1][k]=equipos[equipos.length-2-k];
+			}
+  //Enfrentamientos de la jornada 2
+		    
+		    for (int j=0; j<enfrentamientos[0].length;j++) {
+		        partidosIda[i].setEquipoLocal(enfrentamientos[0][j]);
+		        partidosIda[i].setEquipoVisitante(enfrentamientos[1][j]);
+		        
+		        partidosVuelta[i].setEquipoLocal(enfrentamientos[1][j]);
+		        partidosVuelta[i].setEquipoVisitante(enfrentamientos[0][j]);
+		    }
+		    //Asignamos los partidos a la de ida
+		    jornadas[i].setPartidos(partidosIda);
+		    //Asignamos los partidos a la de vuelta
+		    jornadas[i+jornadas.length-1].setPartidos(partidosVuelta);
+		    
 		    
 		}
 		
