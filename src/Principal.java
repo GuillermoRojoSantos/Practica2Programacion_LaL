@@ -28,7 +28,7 @@ public class Principal {
 //
 //		for (Partido p: crearPartido(equipoLocal,equipoVisitante,arbitro,5,fecha,"19:00")) System.out.println(p+"\n");
 		
-		for(Jornada j: crearJornada(10,"3 dias")) {
+		for(Jornada j: crearJornada(3)) {
 			System.out.println(j+"\n");
 		}
 
@@ -94,9 +94,9 @@ public class Principal {
 
 	private static Equipo[] crearEquipos(int numeroEquipos,int edad) {
 		
-		String [] nombreEquipos = {"Real Madrid", "Sevilla", "Betis", "Atl√©tico de Madrid", "Barcelona", "Real Sociedad",
+		String [] nombreEquipos = {"Real Madrid", "Sevilla", "Betis", "Atletico de Madrid", "Barcelona", "Real Sociedad",
 				"Villarreal","Rayo Vallecano", "Athletic de Bilbao", "Valencia C.F.", "Osasuna", "Celta de Vigo", "RCD Espanyol",
-				"Granada","Elche C.F.", "Getafe", "R.C.D Mallorca", "C√°diz", "Alav√©s","Levante"};
+				"Granada","Elche C.F.", "Getafe", "R.C.D Mallorca", "Cadiz", "Alaves","Levante"};
 		
 		String [] mascotas = {"Los Pollos", "Los Araclanes", "Los Limones", "Los Delfines", "Los Chanquetes", "Los Gatitos",
 								"Los Boquerones", "Los Toros", "Los Perritos", "Los Halcones", "Los Ornitorrincos", "Los Caracoles",
@@ -197,7 +197,7 @@ public class Principal {
 
 
 	}*/
-	private static Partido[] crearPartido(int numPartidos, String fecha, String horaJuego){
+	private static Partido[] crearPartido(int numPartidos, String horaJuego){
 
 		
 		
@@ -209,13 +209,14 @@ public class Principal {
 
 			Partido partido= new Partido();
 			Equipo [] equipos= crearEquipos(2,10);
-			Arbitro arbitro=new Arbitro();
-			arbitro.setNombre("Felipe");
+			Arbitro arbitro=crearArbitro();
 			partido.setEquipoLocal(equipos[0]);
+			
 			partido.setEquipoVisitante(equipos[1]);
-			partido.setfecha(fecha);
 			partido.setHoraJuego(horaJuego);
 			partido.setArbitro(arbitro);
+			
+			
 		
 			
 
@@ -244,7 +245,7 @@ public class Principal {
 	}
 
 
-	private static Jornada [] crearJornada( int cantJornada, String duracionJornada){
+	private static Jornada [] crearJornada( int cantJornada){
 		
 //		Partido [] partido= new Partido[1]; 
 //		Equipo equipoLocal= new Equipo();
@@ -264,10 +265,9 @@ public class Principal {
 		
 		for(int i=0;i<cantJornada;i++) {
 			Jornada jornada=new Jornada();
-			Partido[] partido= crearPartido(2,"8 de mayo","18:00");
+			Partido[] partido= crearPartido(2,"18:00");
 			jornada.setPartidos(partido);
 			jornada.setNumJornada(numJornada);
-			jornada.setDuracionJornada(duracionJornada);
 			numJornada++;
 			
 			
@@ -279,6 +279,34 @@ public class Principal {
 
 		return listaJornada;
 
+	}
+	private static Arbitro crearArbitro() {
+		String[] nombres = {"Antonio", "Pepito", "Adri·n", "Ismael", "Hugo", "Oliver","Kalesi",
+				"Ingrid","Astrid","Indira"};
+		String[] apellidos = {"Guzm·n", "S·nchez", "Munuera", "GarcÌa", "Gonz·lez","RodrÌguez",
+				"Fern·ndez","LÛpez","GÛmez","Moreno"};
+		
+		
+		
+		Arbitro arbitro= new Arbitro();
+		
+		
+		//Nombre
+				int numero = (int) Math.floor(Math.random()*nombres.length);
+				String nombre = nombres[numero];
+				arbitro.setNombre(nombre);
+				
+				//Apellidos
+				numero = (int) Math.floor(Math.random()*apellidos.length);
+				String apellido1 = apellidos[numero];
+				numero = (int) Math.floor(Math.random()*apellidos.length);
+				String apellido2 = apellidos[numero];
+				arbitro.setApellidos(apellido1+" "+apellido2);
+				
+				arbitro.setLicencia((int)Math.random()*100);
+				arbitro.setEdad((int)Math.random()*100);
+				
+				return arbitro;
 	}
 
 

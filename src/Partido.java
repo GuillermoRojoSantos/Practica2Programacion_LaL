@@ -6,8 +6,8 @@ public class Partido {
 	private Equipo equipoLocal;
 	private Equipo equipoVisitante;
 	private Arbitro arbitro;
-	private String fecha;
 	private String horaJuego;
+	
 	
 	public Equipo getEquipoLocal() {
 		return equipoLocal;
@@ -27,12 +27,8 @@ public class Partido {
 	public void setArbitro(Arbitro arbitro) {
 		this.arbitro = arbitro;
 	}
-	public String getfecha() {
-		return fecha;
-	}
-	public void setfecha(String fecha) {
-		this.fecha = fecha;
-	}
+	
+	
 	public String getHoraJuego() {
 		return horaJuego;
 	}
@@ -43,8 +39,8 @@ public class Partido {
 	@Override
 	public String toString() {
 		return "EquipoLocal " + equipoLocal.getNombre()+" VS " +  equipoVisitante.getNombre()  +
-	          " equipoVisitante"+"\n" + "Arbitro " + arbitro.getNombre()
-				+"\n"+ "Fecha " + fecha + " horaJuego " + horaJuego+"\n"+"\n" ;
+	          " equipoVisitante"+"\n" + "Arbitro " + arbitro.getNombre()+" "+arbitro.getApellidos()
+				+"\n" + " horaJuego " + horaJuego+"\n"+"\n" ;
 	}
 	
 	

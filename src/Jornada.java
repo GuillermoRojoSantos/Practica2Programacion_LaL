@@ -23,21 +23,10 @@ public class Jornada {
 		this.numJornada = numJornada;
 	}
 
-	public String getDuracionJornada() {
-		return duracionJornada;
-	}
-
-	public void setDuracionJornada(String duracionJornada) {
-		this.duracionJornada = duracionJornada;
-	}
-
-
 
 	@Override
 	public String toString() {
 		return "Jornada "+getNumJornada()+"\n" +
-				  Arrays.toString(partidos) +
-				" La jornada dura " + duracionJornada 
-				;
+				  Arrays.toString(partidos);
 	}
 }
