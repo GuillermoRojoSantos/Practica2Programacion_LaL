@@ -1,12 +1,12 @@
 
 public class Clasificacion {
-    public int getNumClasificacion() {
-        return numClasificacion;
-    }
+	
+	private Equipo[] equipo;
 
-    public void setNumClasificacion(int numClasificacion) {
-        this.numClasificacion = numClasificacion;
-    }
+	public Equipo[] getEquipo() {
+		return equipo;
+	}
 
-    private int numClasificacion;
-}
+	public void setEquipo(Equipo[] equipo) {
+		this.equipo = equipo;
+	}
