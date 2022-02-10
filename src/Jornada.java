@@ -1,10 +1,10 @@
 import java.util.Arrays;
 
 public class Jornada {
-	
-	private Partido [] partidos;
-	private  int numJornada;
-	private  String duracionJornada;
+
+	private Partido[] partidos;
+	private int numJornada;
+	private String duracionJornada;
 
 
 	public Partido[] getPartidos() {
@@ -26,7 +26,7 @@ public class Jornada {
 
 	@Override
 	public String toString() {
-		return "Jornada "+getNumJornada()+"\n" +
-				  Arrays.toString(partidos);
+		return "Jornada " + getNumJornada() + "\n" +
+				Arrays.toString(partidos);
 	}
 }

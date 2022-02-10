@@ -10,5 +10,3 @@ public class Clasificacion {
 	public void setEquipo(Equipo[] equipo) {
 		this.equipo = equipo;
 	}
-
-}
