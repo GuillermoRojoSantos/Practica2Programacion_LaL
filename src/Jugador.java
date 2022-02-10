@@ -4,6 +4,39 @@ public final class Jugador extends Persona{
 	private String posicion;
 	private int dorsal;
 	private Equipo equipo;
+
+	public static Jugador generarJugador(){
+		String[] nombres = {"Antonio", "Pepito", "Alejandra", "Ismael", "Hugo", "Oliver","Kalesi",
+				"Ingrid","Astrid","Indira","Jenny","Jessi","Vane","Joel","Bruno",
+				"Sasha","Billie","Masha","Pingu"};
+		String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Pique","Bale (lesionado)",
+				"Amunike","N'kono","Butrague�o","Sanchis","Neymar","Batistuta","Maradona",
+				"Pele","Beckenbauer"};
+		String[] posiciones = {"Portero/a","Defensa","Centrocampista","Delantero/a"};
+		//Nombre Jugador
+		Jugador jugador=new Jugador();
+		int numero = (int) Math.floor(Math.random()*nombres.length);
+		String nombre = nombres[numero];
+		jugador.setNombre(nombre);
+		//Apellidos
+		numero = (int) Math.floor(Math.random()*apellidos.length);
+		String apellido1 = apellidos[numero];
+		numero = (int) Math.floor(Math.random()*apellidos.length);
+		String apellido2 = apellidos[numero];
+		jugador.setApellidos(apellido1+" "+apellido2);
+		//Posicion
+		numero = (int) Math.floor(Math.random()*posiciones.length);
+		String posicion = posiciones[numero];
+		jugador.setPosicion(posicion);
+		//Edad
+		numero = (int) Math.floor(Math.random()*(40-21));
+		jugador.setEdad(numero);
+		//Categoría
+		jugador.setCategoria(jugador.getEdad());
+
+
+		return jugador;
+	}
 	
 	@Override
 	public void setEdad(int edad) {

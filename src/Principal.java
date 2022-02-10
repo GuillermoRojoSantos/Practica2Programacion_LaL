@@ -28,9 +28,7 @@ public class Principal {
 //
 //		for (Partido p: crearPartido(equipoLocal,equipoVisitante,arbitro,5,fecha,"19:00")) System.out.println(p+"\n");
 		
-		for(Jornada j: crearJornada(3)) {
-			System.out.println(j+"\n");
-		}
+
 
 		
 		
@@ -48,7 +46,7 @@ public class Principal {
 				"Ingrid","Astrid","Indira","Jenny","Jessi","Vane","Joel","Bruno",
 				"Sasha","Billie","Masha","Pingu"};
 		String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Pique","Bale (lesionado)",
-				"Amunike","N'kono","Butragueño","Sanchis","Neymar","Batistuta","Maradona",
+				"Amunike","N'kono","Butragueï¿½o","Sanchis","Neymar","Batistuta","Maradona",
 				"Pele","Beckenbauer"};
 		String[] posiciones = {"Portero/a","Defensa","Centrocampista","Delantero/a"};
 		
@@ -197,6 +195,7 @@ public class Principal {
 
 
 	}*/
+
 	private static Partido[] crearPartido(int numPartidos, String horaJuego){
 
 		
@@ -281,10 +280,10 @@ public class Principal {
 
 	}
 	private static Arbitro crearArbitro() {
-		String[] nombres = {"Antonio", "Pepito", "Adrián", "Ismael", "Hugo", "Oliver","Kalesi",
+		String[] nombres = {"Antonio", "Pepito", "Adriï¿½n", "Ismael", "Hugo", "Oliver","Kalesi",
 				"Ingrid","Astrid","Indira"};
-		String[] apellidos = {"Guzmán", "Sánchez", "Munuera", "García", "González","Rodríguez",
-				"Fernández","López","Gómez","Moreno"};
+		String[] apellidos = {"Guzmï¿½n", "Sï¿½nchez", "Munuera", "Garcï¿½a", "Gonzï¿½lez","Rodrï¿½guez",
+				"Fernï¿½ndez","Lï¿½pez","Gï¿½mez","Moreno"};
 		
 		
 		

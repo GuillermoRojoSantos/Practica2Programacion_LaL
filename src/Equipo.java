@@ -6,6 +6,10 @@ public class Equipo {
 	private String equipacionCasa;
 	private String equipacionFuera;
 	private Jugador[] jugadores;
+
+	public void generarEquipo(){
+
+	}
 	
 	
 	
