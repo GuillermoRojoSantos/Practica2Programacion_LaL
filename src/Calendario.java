@@ -43,7 +43,7 @@ public class Calendario  {
 		    //Asignamos los partidos a la de ida
 		    jornadas[i].setPartidos(partidosIda);
 		    //Asignamos los partidos a la de vuelta
-		    jornadas[i+jornadas.length-1].setPartidos(partidosVuelta);
+		    jornadas[jornadas.length-1-i].setPartidos(partidosVuelta);
 		    
 		    
  //Mover la tabla de enfrentamientos JORNADA 2
@@ -73,7 +73,7 @@ public class Calendario  {
 		    //Asignamos los partidos a la de ida
 		    jornadas[i].setPartidos(partidosIda);
 		    //Asignamos los partidos a la de vuelta
-		    jornadas[i+jornadas.length-1].setPartidos(partidosVuelta);
+		    jornadas[jornadas.length-1-i].setPartidos(partidosVuelta);
 		    
 		    
 		}
