@@ -1,12 +1,12 @@
 
 public class Clasificacion {
-	
-	private Equipo[] equipo;
+	private EqiupoClasificacion[] tabla;
 
-	public Equipo[] getEquipo() {
-		return equipo;
+	public EqiupoClasificacion[] getTabla() {
+		return tabla;
 	}
 
-	public void setEquipo(Equipo[] equipo) {
-		this.equipo = equipo;
+	public void setTabla(EqiupoClasificacion[] tabla) {
+		this.tabla = tabla;
 	}
+}
