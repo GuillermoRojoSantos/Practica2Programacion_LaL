@@ -32,7 +32,12 @@ public class Principal {
 			System.out.println(j+"\n");
 		}
 
+		//muestrame la clasificacion
+		Liga miliga
 		
+		calendario micalendario
+		
+		clasificacion clasificacion
 		
 
 		

@@ -51,6 +51,14 @@ public class Calendario {
         }
     }
 
+	public Jornada[] getJornadas() {
+		return jornadas;
+	}
+
+	public void setJornadas(Jornada[] jornadas) {
+		this.jornadas = jornadas;
+	}
+
 
 	
 }
