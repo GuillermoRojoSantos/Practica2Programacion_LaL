@@ -5,6 +5,7 @@ public class Jornada {
 	private Partido[] partidos;
 	private int numJornada;
 	private String duracionJornada;
+	private boolean terminada=false;
 
 
 	public Partido[] getPartidos() {
@@ -23,6 +24,17 @@ public class Jornada {
 		this.numJornada = numJornada;
 	}
 
+
+	public boolean isTerminada() {
+		return terminada;
+	}
+
+	public void setTerminada(boolean terminada) {
+		this.terminada = terminada;
+	}
+	public void terminar() {
+		this.terminada=true;
+	}
 
 	@Override
 	public String toString() {

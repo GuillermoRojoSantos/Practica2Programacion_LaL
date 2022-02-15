@@ -314,5 +314,24 @@ public class Principal {
 				return arbitro;
 	}
 
+	private static void generarPartidos(Calendario calendario, int jornadasJugadas) {
+		Jornada [] jornadas = calendario.getJornadas();
+		
+		int totalJornadas  = jornadas.length;
+		final int MAXIMOGOLES=7;
+		
+		for ( int i = 0 ; i<jornadasJugadas && i<totalJornadas;i ++) {
+			
+			Partido [] partido= jornadas[i].getPartidos();
+			
+			for (Partido par: partido) {
+				int golesLocales = (int) Math.floor(Math.random()*MAXIMOGOLES);
+				int golesVisitantes = (int) Math.floor(Math.random()*MAXIMOGOLES);
+				par.setGolesLocal(golesLocales);
+				par.setGolesVisitante(golesVisitantes);
+			}
+			jornadas[i].terminar();
+		}
+	}
 
 }
