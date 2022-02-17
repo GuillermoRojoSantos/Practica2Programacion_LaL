@@ -98,6 +98,7 @@ public class Principal {
 
 
 	private static Equipo[] crearEquipos(int numeroEquipos,int edad) {
+
 		
 		String [] nombreEquipos = {"Real Madrid", "Sevilla", "Betis", "Atletico de Madrid", "Barcelona", "Real Sociedad",
 				"Villarreal","Rayo Vallecano", "Athletic de Bilbao", "Valencia C.F.", "Osasuna", "Celta de Vigo", "RCD Espanyol",
@@ -151,6 +152,31 @@ public class Principal {
 		
 		}
 		return listaEquipos;
+		
+	}
+	private static Equipo crearUnEquipo() {
+		
+		String [] nombreEquipos = {"Real Madrid", "Sevilla", "Betis", "Atletico de Madrid", "Barcelona", "Real Sociedad",
+				"Villarreal","Rayo Vallecano", "Athletic de Bilbao", "Valencia C.F.", "Osasuna", "Celta de Vigo", "RCD Espanyol",
+				"Granada","Elche C.F.", "Getafe", "R.C.D Mallorca", "Cadiz", "Alaves","Levante"};
+		
+		int numero = (int) Math.floor(Math.random()*nombreEquipos.length);
+		
+		String nombre= nombreEquipos[numero];
+		
+		
+		Equipo equipo= new Equipo();
+		equipo.setNombre(nombre);
+		
+		Entrenador entrenador= new Entrenador();
+		entrenador= crearEntrenador(equipo);
+		
+		equipo.setEntrenador(entrenador);
+		
+		Jugador[] jugador = crearJugadores(10,12,equipo);
+		equipo.setJugadores(jugador);
+		
+		return equipo;
 		
 	}
 
