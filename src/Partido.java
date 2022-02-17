@@ -54,6 +54,6 @@ public class Partido {
 	public String toString() {
 		return "EquipoLocal " + equipoLocal.getNombre()+" VS " +  equipoVisitante.getNombre()  +
 	          " equipoVisitante"+"\n" + "Arbitro " + arbitro.getNombre()+" "+arbitro.getApellidos()
-				+"\n" + " horaJuego " + horaJuego+"\n"+"\n" ;
+				+"\n"+"\n" ;
 	}
 }

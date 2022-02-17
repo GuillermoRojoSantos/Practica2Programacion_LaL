@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Liga {
 	
 	private String nombre;
@@ -7,36 +5,42 @@ public class Liga {
 	private Calendario calendario;
 	private Arbitro[] arbitros;
 	private Clasificacion clasificacion;
+	
 
-	public void setLigaNombre (String nombre){
+	public Liga (String nombre, Equipo[] equipos, Arbitro[] arbitros) {
 		this.nombre=nombre;
+		this.equipos=equipos;
+		this.arbitros=arbitros;
+		this.calendario=new Calendario(this.equipos,this.arbitros);
 	}
-	public String getLigaNombre (){
+	
+	public String getNombre() {
 		return nombre;
 	}
-
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 	public Equipo[] getEquipos() {
 		return equipos;
 	}
-
 	public void setEquipos(Equipo[] equipos) {
 		this.equipos = equipos;
 	}
-	
-	public String toStringEquipos(Equipo[] equipos) {
-		
-		String listaEquipos="";
-		for(Equipo e:equipos ) {
-			listaEquipos+=e.getNombre()+"\n";
-		}
-		return listaEquipos;
-	
-		
+	public Calendario getCalendario() {
+		return calendario;
 	}
-	@Override
-	public String toString() {
-		return "Nombre Liga: " + nombre +"\n" +"Equipos: "+ "\n" + toStringEquipos(this.equipos);
+
+	public Arbitro[] getArbitros() {
+		return arbitros;
 	}
+	public void setArbitros(Arbitro[] arbitros) {
+		this.arbitros = arbitros;
+	}
+	public Clasificacion getClasificacion() {
+		this.clasificacion =  new Clasificacion(this.equipos,this.calendario);
+		return clasificacion;
+	}
+
 	
 	
 }

@@ -38,7 +38,7 @@ public class Jornada {
 
 	@Override
 	public String toString() {
-		return "Jornada " + getNumJornada() + "\n" +
+		return "Jornada "  + "\n" +
 				Arrays.toString(partidos);
 	}
 }

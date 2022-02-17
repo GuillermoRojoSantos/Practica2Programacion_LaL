@@ -28,16 +28,32 @@ public class Principal {
 //
 //		for (Partido p: crearPartido(equipoLocal,equipoVisitante,arbitro,5,fecha,"19:00")) System.out.println(p+"\n");
 		
-		for(Jornada j: crearJornada(3)) {
-			System.out.println(j+"\n");
-		}
+//		for(Jornada j: crearJornada(3)) {
+//			System.out.println(j+"\n");
+//		}
 
-		//muestrame la clasificacion
-		Liga miliga
-		
-		calendario micalendario
-		
-		clasificacion clasificacion
+		//Crear una liga
+				final int EQUIPOS=20;
+				final int EDAD=12;
+				final String NOMBRELIGA="Liga Profesional";
+				final int JORNADASJUGADAS=15;
+
+				Equipo[] misEquipos = crearEquipos(EQUIPOS, EDAD);
+				
+				Arbitro[] arbitros= new Arbitro[EQUIPOS/2];
+				for (int i=0; i<arbitros.length;i++) {
+					arbitros[i]=crearArbitro();
+				}
+				
+				Liga miLiga = new Liga(NOMBRELIGA,misEquipos,arbitros);
+				System.out.println(miLiga.getCalendario());
+				
+				
+				Calendario miCalendario = miLiga.getCalendario();
+				generarPartidos(miCalendario,JORNADASJUGADAS);
+				
+				Clasificacion clasificacion = new Clasificacion (misEquipos,miCalendario);
+				System.out.println(clasificacion);
 		
 
 		
@@ -45,6 +61,10 @@ public class Principal {
 		
 
 
+	}
+	private static void menuPrincipal() {
+		System.out.println("Bienvenido al generador virtual de Ligas");
+		
 	}
 
 	private static Jugador[] crearJugadores(int numeroJugadores, int edad, Equipo equipo) {

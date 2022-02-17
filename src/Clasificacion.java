@@ -1,4 +1,3 @@
-import java.util.Arrays;
 
 public class Clasificacion {
 
@@ -8,15 +7,16 @@ public class Clasificacion {
 		int numeroEquipos = equipos.length;
 
 		this.tabla = new EquipoClasificacion[numeroEquipos];
-
-		// crear tabla clasificacion
+		// Crear la tabla de clasificacion
 		for (int i = 0; i < numeroEquipos; i++) {
 			this.tabla[i] = new EquipoClasificacion();
 			this.tabla[i].setEquipo(equipos[i]);
 		}
-		// tenemos que cambiar el numero de jornadas a jugar
+
+		// Tenemos que cambiar el numero de jornadas a jugar
 
 		// Rellenamos la tabla de clasificacion
+
 		Jornada[] jornadas = calendario.getJornadas();
 
 		for (Jornada jor : jornadas) {
@@ -24,12 +24,11 @@ public class Clasificacion {
 
 				Partido[] partidos = jor.getPartidos();
 				for (Partido par : partidos) {
-					// quien es el local
+					// Quien es el local
 					Equipo local = par.getEquipoLocal();
-					// quien es el visitante
+					// Quien es el visitante
 					Equipo visitante = par.getEquipoVisitante();
-
-					// Buscarlos en la clasificacion
+					// Buscarlos en la clasificación
 					int contador = 0;
 					EquipoClasificacion localClas = tabla[contador];
 					while (localClas.getEquipo() != local) {
@@ -38,7 +37,6 @@ public class Clasificacion {
 					}
 					contador = 0;
 					EquipoClasificacion visitClas = tabla[contador];
-
 					while (visitClas.getEquipo() != visitante) {
 						contador++;
 						visitClas = tabla[contador];
@@ -56,27 +54,26 @@ public class Clasificacion {
 					visitClas.addGolesContra(golesLocal);
 
 					// Resolvemos puntos
-					if (golesLocal > golesVisitante) { // Victoria local
+					if (golesLocal > golesVisitante) {// Victoria Local
 						localClas.addPartidoGanado();
 						visitClas.addPartidoPerdido();
-					} else if (golesVisitante > golesLocal) {// victoria visitante
+					} else if (golesVisitante > golesLocal) {// Victoria Visitante
 						visitClas.addPartidoGanado();
-						visitClas.addPartidoPerdido();
-					} else {// empate
+						localClas.addPartidoPerdido();
+					} else {// Empate
 						visitClas.addPartidoEmpatado();
 						localClas.addPartidoEmpatado();
 					}
 				}
 			}
-
 		}
-
-		// Reordenamos la tabla
-
 		ordenar();
+
 	}
 
 	private void ordenar() {
+		// Ordenacion por bubble sort
+
 		int n = tabla.length;
 		EquipoClasificacion temp = null;
 		for (int i = 0; i < n; i++) {
@@ -90,20 +87,19 @@ public class Clasificacion {
 
 			}
 		}
-
 	}
 
 	private boolean vaDebajo(EquipoClasificacion equipo1, EquipoClasificacion equipo2) {
-		if (equipo1.getPuntos() < equipo2.getPuntos()) { // primer criterio puntos
+		if (equipo1.getPuntos() < equipo2.getPuntos()) {// Primer criterio Puntos
 			return true;
 		} else if (equipo1.getPuntos() > equipo2.getPuntos()) {
 			return false;
-		} else { // A igualdad de puntos diferencia de goles
+		} else {// A igualdad de puntos diferencia goles
 			if (equipo1.getDifGoles() < equipo2.getDifGoles()) {
 				return true;
 			} else if (equipo1.getDifGoles() > equipo2.getDifGoles()) {
 				return false;
-			} else {// A igualdad de puntos y dif goles. Partidos ganados
+			} else {// A igualad de puntos y dif goles. PArtidos ganados
 				if (equipo1.getGanados() < equipo2.getGanados()) {
 					return true;
 				} else {
@@ -111,7 +107,6 @@ public class Clasificacion {
 				}
 			}
 		}
-
 	}
 
 	public EquipoClasificacion[] getTabla() {
@@ -122,15 +117,13 @@ public class Clasificacion {
 		this.tabla = tabla;
 	}
 
-	@Override
 	public String toString() {
-		String cadena = "Equipo\t\t" + "puntos\t" + "jugados\t" + "ganados\t" + " E\t" + "P\t" + "gF\t" + "gC\t"
-				+ "dfG\t" + "/n";
-
-		for (EquipoClasificacion eqclas : this.tabla) {
-			cadena += eqclas;
+		String cadena = "Equipo\t\t\t\t\t\t" + "J\t" + "G\t" + "E\t" + "P\t" + "gf\t" + "gc\t" + "dg\t" + "Ptos\n";
+		for (EquipoClasificacion eqClas : this.tabla) {
+			cadena += eqClas;
 		}
-		return cadena;
-	}
 
+		return cadena;
+
+	}
 }
