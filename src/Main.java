@@ -3,20 +3,37 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
+        //Creamos una liga
+        final String nombreLiga= "Liga de la L";
+        final int equipos=20;
+        final int edad=12;
+        final int JORNADASJUGADAS=15;
+
+        Equipo[] misEquipos = crearEquipos(equipos, edad);
+        Arbitro[] misArbitros= crearArbitros(equipos/2);
+
+
+        Liga miLiga = new Liga(nombreLiga,misEquipos,misArbitros);
+        Calendario miCalendario = miLiga.getCalendario();
+        crearPartidosSilencioso(miLiga.getCalendario(), JORNADASJUGADAS);
+        Clasificacion clasificacionLiga = new Clasificacion (misEquipos,miCalendario);
+
         imprimirMenu();
         int opcionMenu= sc.nextInt();
         while (opcionMenu!=10){
             switch (opcionMenu){
                 case 1:
-                    crearLiga();
+                    System.out.println(miLiga.getClasificacion());
                     break;
                 case 2:
-                    verClasificacion();
+                    System.out.println(miLiga.getCalendario());
                     break;
 
                 case 3:
-                    verCalendario();
+                    //aqui se introduciran los resultados
                     break;
+
 
                 default:
                     System.out.println("Opcion no valida");
@@ -30,17 +47,38 @@ public class Main {
 
     }
 
+    /*UTILIDADES*/
     public static void imprimirMenu(){
         System.out.println("*************************************************************************************************************");
         System.out.println("*************************************** Bienvenido a la liga ************************************************");
-        System.out.println("                                         1 Crear liga automáticamente");
-        System.out.println("                                         2 Ver clasificaciones.");
-        System.out.println("                                         3 Ver Calendarios.");
-        System.out.println("                                         4 Introducir Resultados.");
+        System.out.println("                                         1 Ver clasificaciones.");
+        System.out.println("                                         2 Ver Calendarios.");
+        System.out.println("                                         3 Introducir Resultados.");
         System.out.println("                                         10 Salir");
         System.out.println("*************************************************************************************************************");
     }
+    private static void limpiarPantalla() {
+        for (int i = 0 ; i < 10 ; i++)
+        {
+            System.out.println();
+        }
+    }
+    private static void esperarPulsacion(){
+        Scanner sc= new Scanner(System.in);
+        sc.nextLine();
+    }
+    private static String leerPulsacion(){
+        Scanner sc= new Scanner(System.in);
+        String resultado= sc.nextLine();
+        return resultado;
+    }
+    private static int leerNumero(){
+        Scanner sc= new Scanner(System.in);
+        int resultado= sc.nextInt();
+        return resultado;
+    }
 
+    /*CREADORES DE OBJETOS (ARRAYS)*/
     private static Jugador[] crearJugadores(int numeroJugadores, int edad, Equipo equipo) {
         //Listado de Nombres, Apellidos, Posiciones para generador random
         String[] nombres = {"Antonio", "Pepito", "Alejandra", "Ismael", "Hugo", "Oliver","Kalesi",
@@ -91,44 +129,6 @@ public class Main {
 
         return jugadores;
     }
-
-    private static Entrenador crearEntrenador(Equipo equipo) {
-        //Listado de Nombres, Apellidos, Posiciones para generador random
-        String[] nombres = {"Antonio", "Pepito", "Alejandra", "Ismael", "Hugo", "Oliver","Kalesi",
-                "Ingrid","Astrid","Indira","Jenny","Jessi","Vane","Joel","Bruno",
-                "Sasha","Billie","Masha","Pingu"};
-        String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Piqu�","Bale (lesionado)",
-                "Amunike","N'kono","Butrague�o","Sanch�s","Neymar","Batistuta","Maradona",
-                "Pel�","Beckenbauer"};
-        Entrenador entrenador = new Entrenador();
-
-        //Nombre
-        int numero = (int) Math.floor(Math.random()*nombres.length);
-        String nombre = nombres[numero];
-        entrenador.setNombre(nombre);
-
-        //Apellidos
-        numero = (int) Math.floor(Math.random()*apellidos.length);
-        String apellido1 = apellidos[numero];
-        numero = (int) Math.floor(Math.random()*apellidos.length);
-        String apellido2 = apellidos[numero];
-        entrenador.setApellidos(apellido1+" "+apellido2);
-
-        //Equipo
-        entrenador.setEquipo(equipo);
-
-        //Edad
-        int edad = (int) Math.floor(Math.random()*47)+18;
-        entrenador.setEdad(edad);
-        //Licencia
-        int licencia = (int) Math.floor(Math.random()*100000);
-        entrenador.setNumeroLicencia(licencia);
-
-        //System.out.println(entrenador);
-
-        return entrenador;
-    }
-
     public static Arbitro[] crearArbitros(int numArbitros){
         //Listado de Nombres, Apellidos, Posiciones para generador random
         String[] nombres = {"Antonio", "Pepito", "Alejandra", "Ismael", "Hugo", "Oliver","Kalesi",
@@ -167,39 +167,6 @@ public class Main {
         }
         return arbitros;
     }
-
-    private static Arbitro crearArbitro() {
-        //Listado de Nombres, Apellidos, Posiciones para generador random
-        String[] nombres = {"Antonio", "Pepito", "Alejandra", "Ismael", "Hugo", "Oliver","Kalesi",
-                "Ingrid","Astrid","Indira","Jenny","Jessi","Vane","Joel","Bruno",
-                "Sasha","Billie","Masha","Pingu"};
-        String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Piqué","Bale (lesionado)",
-                "Amunike","N'kono","Butragueño","Sanchís","Neymar","Batistuta","Maradona",
-                "Pelé","Beckenbauer"};
-        Arbitro arbitro = new Arbitro();
-
-        //Nombre
-        int numero = (int) Math.floor(Math.random()*nombres.length);
-        String nombre = nombres[numero];
-        arbitro.setNombre(nombre);
-
-        //Apellidos
-        numero = (int) Math.floor(Math.random()*apellidos.length);
-        String apellido1 = apellidos[numero];
-        numero = (int) Math.floor(Math.random()*apellidos.length);
-        String apellido2 = apellidos[numero];
-        arbitro.setApellidos(apellido1+" "+apellido2);
-
-        //Edad
-        int edad = (int) Math.floor(Math.random()*47)+18;
-        arbitro.setEdad(edad);
-        //Licencia
-        int licencia = (int) Math.floor(Math.random()*100000);
-        arbitro.setLicencia(licencia);
-
-        return arbitro;
-    }
-
     private static Equipo[] crearEquipos(int numeroEquipos,int edad) {
 
         String [] nombreBarrios = {"El Candado", "Huelin", "Tiro Pich�n", "Rinc�n de la Victoria", "La Rosaleda", "Torremolinos",
@@ -261,6 +228,105 @@ public class Main {
 
     }
 
+    /*CREADORES DE OBJETOS  (UN SOLO OBJETO)*/
+    private static Entrenador crearEntrenador(Equipo equipo) {
+        //Listado de Nombres, Apellidos, Posiciones para generador random
+        String[] nombres = {"Antonio", "Pepito", "Alejandra", "Ismael", "Hugo", "Oliver","Kalesi",
+                "Ingrid","Astrid","Indira","Jenny","Jessi","Vane","Joel","Bruno",
+                "Sasha","Billie","Masha","Pingu"};
+        String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Piqu�","Bale (lesionado)",
+                "Amunike","N'kono","Butrague�o","Sanch�s","Neymar","Batistuta","Maradona",
+                "Pel�","Beckenbauer"};
+        Entrenador entrenador = new Entrenador();
+
+        //Nombre
+        int numero = (int) Math.floor(Math.random()*nombres.length);
+        String nombre = nombres[numero];
+        entrenador.setNombre(nombre);
+
+        //Apellidos
+        numero = (int) Math.floor(Math.random()*apellidos.length);
+        String apellido1 = apellidos[numero];
+        numero = (int) Math.floor(Math.random()*apellidos.length);
+        String apellido2 = apellidos[numero];
+        entrenador.setApellidos(apellido1+" "+apellido2);
+
+        //Equipo
+        entrenador.setEquipo(equipo);
+
+        //Edad
+        int edad = (int) Math.floor(Math.random()*47)+18;
+        entrenador.setEdad(edad);
+        //Licencia
+        int licencia = (int) Math.floor(Math.random()*100000);
+        entrenador.setNumeroLicencia(licencia);
+
+        //System.out.println(entrenador);
+
+        return entrenador;
+    }
+    private static Arbitro crearArbitro() {
+        //Listado de Nombres, Apellidos, Posiciones para generador random
+        String[] nombres = {"Antonio", "Pepito", "Alejandra", "Ismael", "Hugo", "Oliver","Kalesi",
+                "Ingrid","Astrid","Indira","Jenny","Jessi","Vane","Joel","Bruno",
+                "Sasha","Billie","Masha","Pingu"};
+        String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Piqué","Bale (lesionado)",
+                "Amunike","N'kono","Butragueño","Sanchís","Neymar","Batistuta","Maradona",
+                "Pelé","Beckenbauer"};
+        Arbitro arbitro = new Arbitro();
+
+        //Nombre
+        int numero = (int) Math.floor(Math.random()*nombres.length);
+        String nombre = nombres[numero];
+        arbitro.setNombre(nombre);
+
+        //Apellidos
+        numero = (int) Math.floor(Math.random()*apellidos.length);
+        String apellido1 = apellidos[numero];
+        numero = (int) Math.floor(Math.random()*apellidos.length);
+        String apellido2 = apellidos[numero];
+        arbitro.setApellidos(apellido1+" "+apellido2);
+
+        //Edad
+        int edad = (int) Math.floor(Math.random()*47)+18;
+        arbitro.setEdad(edad);
+        //Licencia
+        int licencia = (int) Math.floor(Math.random()*100000);
+        arbitro.setLicencia(licencia);
+
+        return arbitro;
+    }
+
+    /*OPCIONES DEL MENU*/
+   /* private static void verClasificacion(){
+
+        Clasificacion clasificacion = new Clasificacion (misEquipos,miCalendario);
+        System.out.println(clasificacion);
+
+    }*/
+    private static void verCalendario(){
+        //Crear una liga
+        final int EQUIPOS=20;
+        final int EDAD=12;
+        final String NOMBRELIGA="Liga Profesional";
+        final int JORNADASJUGADAS=15;
+
+        Equipo[] misEquipos = crearEquipos(EQUIPOS, EDAD);
+
+        Arbitro[] arbitros= new Arbitro[EQUIPOS/2];
+        for (int i=0; i<arbitros.length;i++) {
+            arbitros[i]=crearArbitro();
+        }
+
+        Liga miLiga = new Liga(NOMBRELIGA,misEquipos,arbitros);
+        System.out.println(miLiga.getCalendario());
+
+    }
+
+
+
+
+
     private static void generarPartidos(Calendario calendario, int jornadasJugadas) {
         Jornada [] jornadas = calendario.getJornadas();
         int totalJornadas = jornadas.length;
@@ -282,7 +348,7 @@ public class Main {
 
     }
 
-    private static void crearLiga() {
+    /*private static void crearLiga() {
         //Crear una liga
         final int EQUIPOS=20;
         final int EDAD=12;
@@ -307,33 +373,13 @@ public class Main {
         System.out.println(clasificacion);
 
 
-    }
+    }*/
 
-    private static void verClasificacion(){
-        //Crear una liga
-        final int EQUIPOS=20;
-        final int EDAD=12;
-        final String NOMBRELIGA="Liga Profesional";
-        final int JORNADASJUGADAS=15;
-
-        Equipo[] misEquipos = crearEquipos(EQUIPOS, EDAD);
-
-        Arbitro[] arbitros= new Arbitro[EQUIPOS/2];
-        for (int i=0; i<arbitros.length;i++) {
-            arbitros[i]=crearArbitro();
-        }
-
-        Liga miLiga = new Liga(NOMBRELIGA,misEquipos,arbitros);
-
-
-
-        Calendario miCalendario = miLiga.getCalendario();
-        crearPartidosSilencioso(miLiga.getCalendario(), JORNADASJUGADAS);
-
-        Clasificacion clasificacion = new Clasificacion (misEquipos,miCalendario);
-        System.out.println(clasificacion);
+    private static void crearLiga(){
 
     }
+
+
 
     private static void crearPartidosSilencioso(Calendario calendario, int jornadasJugadas){
         Jornada [] jornadas = calendario.getJornadas();
@@ -355,35 +401,57 @@ public class Main {
 
     }
 
-    private static void verCalendario(){
-        //Crear una liga
-        final int EQUIPOS=20;
-        final int EDAD=12;
-        final String NOMBRELIGA="Liga Profesional";
+
+
+
+
+
+
+
+
+
+
+    /*private Liga createLiga(){
+        final String nombreLiga= "Liga de la L";
+        final int equipos=20;
+        final int edad=12;
         final int JORNADASJUGADAS=15;
 
-        Equipo[] misEquipos = crearEquipos(EQUIPOS, EDAD);
+        Equipo[] misEquipos = crearEquipos(equipos, edad);
+        Arbitro[] misArbitros= crearArbitros(equipos/2);
 
-        Arbitro[] arbitros= new Arbitro[EQUIPOS/2];
-        for (int i=0; i<arbitros.length;i++) {
-            arbitros[i]=crearArbitro();
-        }
+        Liga miLiga = new Liga(nombreLiga,misEquipos,misArbitros);
 
-        Liga miLiga = new Liga(NOMBRELIGA,misEquipos,arbitros);
-        System.out.println(miLiga.getCalendario());
+        return miLiga;
+    }*/
 
-    }
+//falta acabarla
+    //esta clase se usa para que el usuario pueda crear una liga desde cero
+    private Liga crearLigaAMano(){
 
-    private static void limpiarPantalla() {
-        for (int i = 0 ; i < 10 ; i++)
-        {
-            System.out.println();
-        }
-    }
+       //"Creamos" el objeto de liga y a continuacion le añadiremos
+      // atributos poco a poco
 
-    private static void esperarPulsacion(){
-        Scanner sc= new Scanner(System.in);
-        sc.nextLine();
+        //nombre Liga
+        System.out.println("Introduzca nombre de la Liga");
+        String nombreLiga=leerPulsacion();
+        esperarPulsacion();
+        //Equipos liga
+        System.out.println("Introduzca cuantos equipos: ");
+        int numEquipos=leerNumero();
+        esperarPulsacion();
+        System.out.println("Introduzca edad equipos: ");
+        int edadEquipos=leerNumero();
+        esperarPulsacion();
+        //Arbitros Liga
+        System.out.println("Introduzca cuantos arbitros: ");
+        int numArbitros=leerNumero();
+        Liga liga= new Liga(nombreLiga,crearEquipos(numEquipos,edadEquipos),crearArbitros(numArbitros));
+
+        Calendario calendario=liga.getCalendario();
+
+
+        return liga;
     }
 
 }

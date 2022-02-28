@@ -29,6 +29,9 @@ public class Liga {
 	public Calendario getCalendario() {
 		return calendario;
 	}
+	public void setCalendario(Calendario calendario){
+		this.calendario=calendario;
+	}
 
 	public Arbitro[] getArbitros() {
 		return arbitros;

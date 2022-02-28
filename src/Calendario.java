@@ -77,6 +77,8 @@ public class Calendario {
 		return jornadas;
 	}
 
+
+
 	public void setJornadas(Jornada[] jornadas) {
 		this.jornadas = jornadas;
 	}
