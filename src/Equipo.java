@@ -1,4 +1,3 @@
-
 public class Equipo {
 	private String nombre;
 	private String club;
@@ -6,9 +5,9 @@ public class Equipo {
 	private String equipacionCasa;
 	private String equipacionFuera;
 	private Jugador[] jugadores;
-	
-	
-	
+
+
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -51,7 +50,7 @@ public class Equipo {
 			listadoJugadores+=j+"\n";
 		}
 		return listadoJugadores;
-		
+
 	}
 	@Override
 	public String toString() {
@@ -61,7 +60,7 @@ public class Equipo {
 				entrenador+"\n"+
 				"Plantilla: "+"\n"+
 				toStringJugadores(this.jugadores);
-		
+
 	}
 
 

@@ -1,9 +1,9 @@
 
 public class Entrenador extends Persona{
-	
+
 	private int numeroLicencia;
 	private Equipo equipo;
-	
+
 	public int getNumeroLicencia() {
 		return numeroLicencia;
 	}
@@ -21,10 +21,10 @@ public class Entrenador extends Persona{
 		return super.toString()+"\n"+
 				"Numero Licencia: "+this.numeroLicencia+"\n";
 	}
-	
-	
-	
-	
+
+
+
+
 
 
 }

@@ -1,11 +1,6 @@
-import java.util.Arrays;
-
 public class Jornada {
-
-	private Partido[] partidos;
-	private int numJornada;
-	private String duracionJornada;
-
+	private  Partido[] partidos;
+	private boolean terminada=false;
 
 	public Partido[] getPartidos() {
 		return partidos;
@@ -15,18 +10,24 @@ public class Jornada {
 		this.partidos = partidos;
 	}
 
-	public int getNumJornada() {
-		return numJornada;
+	public boolean isTerminada() {
+		return terminada;
 	}
 
-	public void setNumJornada(int numJornada) {
-		this.numJornada = numJornada;
+	public void setTerminada(boolean terminada) {
+		this.terminada = terminada;
 	}
 
+	public void terminar(){
+		this.terminada=true;
+	}
 
 	@Override
 	public String toString() {
-		return "Jornada " + getNumJornada() + "\n" +
-				Arrays.toString(partidos);
+		String cadena="Jornada: \n";
+		for (int i=0;i<this.partidos.length;i++) {
+			cadena+=partidos[i];
+		}
+		return cadena;
 	}
 }

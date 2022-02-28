@@ -1,27 +1,35 @@
-import java.util.Arrays;
 
 public class Partido {
 
-	
-	private Equipo equipoLocal;
-	private Equipo equipoVisitante;
+	private Equipo local;
+	private Equipo visitante;
+	private int gLocal;
+	private int gVisitante;
 	private Arbitro arbitro;
-	private String horaJuego;
-	private int golesLocal;
-	private int golesVisitante;
-	
-	
-	public Equipo getEquipoLocal() {
-		return equipoLocal;
+
+	public Equipo getLocal() {
+		return local;
 	}
-	public void setEquipoLocal(Equipo equipoLocal) {
-		this.equipoLocal = equipoLocal;
+	public void setLocal(Equipo local) {
+		this.local = local;
 	}
-	public Equipo getEquipoVisitante() {
-		return equipoVisitante;
+	public Equipo getVisitante() {
+		return visitante;
 	}
-	public void setEquipoVisitante(Equipo equipoVisitante) {
-		this.equipoVisitante = equipoVisitante;
+	public void setVisitante(Equipo visitante) {
+		this.visitante = visitante;
+	}
+	public int getgLocal() {
+		return gLocal;
+	}
+	public void setgLocal(int gLocal) {
+		this.gLocal = gLocal;
+	}
+	public int getgVisitante() {
+		return gVisitante;
+	}
+	public void setgVisitante(int gVisitante) {
+		this.gVisitante = gVisitante;
 	}
 	public Arbitro getArbitro() {
 		return arbitro;
@@ -29,19 +37,13 @@ public class Partido {
 	public void setArbitro(Arbitro arbitro) {
 		this.arbitro = arbitro;
 	}
-	
-	
-	public String getHoraJuego() {
-		return horaJuego;
-	}
-
-	public void setHoraJuego(String horaJuego) {
-		this.horaJuego = horaJuego;
-	}
 	@Override
 	public String toString() {
-		return "EquipoLocal " + equipoLocal.getNombre()+" VS " +  equipoVisitante.getNombre()  +
-	          " equipoVisitante"+"\n" + "Arbitro " + arbitro.getNombre()+" "+arbitro.getApellidos()
-				+"\n" + " horaJuego " + horaJuego+"\n"+"\n" ;
+		return local.getNombre() + " "+gLocal+" : "
+				+gVisitante+" "+ visitante.getNombre()
+				+", arbitro=" + arbitro.getApellidos() + "\n";
 	}
+
+
+
 }
