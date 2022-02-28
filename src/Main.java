@@ -8,16 +8,15 @@ public class Main {
         final String nombreLiga= "Liga de la L";
         final int equipos=20;
         final int edad=12;
-        final int JORNADASJUGADAS=15;
+        final int JORNADASJUGADAS=38;
 
         Equipo[] misEquipos = crearEquipos(equipos, edad);
         Arbitro[] misArbitros= crearArbitros(equipos/2);
 
 
         Liga miLiga = new Liga(nombreLiga,misEquipos,misArbitros);
-        Calendario miCalendario = miLiga.getCalendario();
-        crearPartidosSilencioso(miLiga.getCalendario(), JORNADASJUGADAS);
-        Clasificacion clasificacionLiga = new Clasificacion (misEquipos,miCalendario);
+        crearPartidosSilencioso(miLiga, JORNADASJUGADAS);
+        Clasificacion clasificacionLiga = new Clasificacion (miLiga.getEquipos(),miLiga.getCalendario());
 
         imprimirMenu();
         int opcionMenu= sc.nextInt();
@@ -32,6 +31,7 @@ public class Main {
 
                 case 3:
                     //aqui se introduciran los resultados
+                    generarPartidos(miLiga.getCalendario(),JORNADASJUGADAS);
                     break;
 
 
@@ -76,6 +76,30 @@ public class Main {
         Scanner sc= new Scanner(System.in);
         int resultado= sc.nextInt();
         return resultado;
+    }
+    /*Este método crea partidos para rellenar el calendario introducido sin mostrar el resultado final
+    * es decir, hay que pedirle a la liga despues de haber*/
+    private static void crearPartidosSilencioso(Liga miLiga, int jornadasJugadas){
+        Jornada [] jornadas = miLiga.getCalendario().getJornadas();
+        int totalJornadas = jornadas.length;
+        final int MAXIMOGOLES=7;
+
+        for (int i=0; i<jornadasJugadas && i<totalJornadas;i++) {
+
+            Partido [] partidos = jornadas[i].getPartidos();
+
+            for (Partido par: partidos) {
+                int golesLocales = (int) Math.floor(Math.random()*MAXIMOGOLES);
+                int golesVisitantes = (int) Math.floor(Math.random()*MAXIMOGOLES);
+                par.setgLocal(golesLocales);
+                par.setgVisitante(golesVisitantes);
+            }
+            miLiga.getCalendario().setJornadas(jornadas);
+            jornadas[i].terminar();
+        }
+        System.out.println(miLiga.getCalendario());
+
+
     }
 
     /*CREADORES DE OBJETOS (ARRAYS)*/
@@ -228,6 +252,7 @@ public class Main {
 
     }
 
+
     /*CREADORES DE OBJETOS  (UN SOLO OBJETO)*/
     private static Entrenador crearEntrenador(Equipo equipo) {
         //Listado de Nombres, Apellidos, Posiciones para generador random
@@ -298,30 +323,6 @@ public class Main {
     }
 
     /*OPCIONES DEL MENU*/
-   /* private static void verClasificacion(){
-
-        Clasificacion clasificacion = new Clasificacion (misEquipos,miCalendario);
-        System.out.println(clasificacion);
-
-    }*/
-    private static void verCalendario(){
-        //Crear una liga
-        final int EQUIPOS=20;
-        final int EDAD=12;
-        final String NOMBRELIGA="Liga Profesional";
-        final int JORNADASJUGADAS=15;
-
-        Equipo[] misEquipos = crearEquipos(EQUIPOS, EDAD);
-
-        Arbitro[] arbitros= new Arbitro[EQUIPOS/2];
-        for (int i=0; i<arbitros.length;i++) {
-            arbitros[i]=crearArbitro();
-        }
-
-        Liga miLiga = new Liga(NOMBRELIGA,misEquipos,arbitros);
-        System.out.println(miLiga.getCalendario());
-
-    }
 
 
 
@@ -375,31 +376,6 @@ public class Main {
 
     }*/
 
-    private static void crearLiga(){
-
-    }
-
-
-
-    private static void crearPartidosSilencioso(Calendario calendario, int jornadasJugadas){
-        Jornada [] jornadas = calendario.getJornadas();
-        int totalJornadas = jornadas.length;
-        final int MAXIMOGOLES=7;
-
-        for (int i=0; i<jornadasJugadas && i<totalJornadas;i++) {
-
-            Partido [] partidos = jornadas[i].getPartidos();
-
-            for (Partido par: partidos) {
-                int golesLocales = (int) Math.floor(Math.random()*MAXIMOGOLES);
-                int golesVisitantes = (int) Math.floor(Math.random()*MAXIMOGOLES);
-                par.setgLocal(golesLocales);
-                par.setgVisitante(golesVisitantes);
-            }
-            jornadas[i].terminar();
-        }
-
-    }
 
 
 
