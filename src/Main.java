@@ -30,8 +30,7 @@ public class Main {
                     break;
 
                 case 3:
-                    //aqui se introduciran los resultados
-                    generarPartidos(miLiga.getCalendario(),JORNADASJUGADAS);
+                    añadirResultados(miLiga);
                     break;
 
 
@@ -323,6 +322,90 @@ public class Main {
     }
 
     /*OPCIONES DEL MENU*/
+    private static void añadirResultados(Liga miLiga){
+        Calendario calendario=miLiga.getCalendario();
+        Jornada jornadas[]= calendario.getJornadas();
+        System.out.println("Actualmente hay: "+jornadas.length+" jornadas, cuantas desea añadir?:");
+        int numNuevasJornadas=leerNumero();
+        Jornada nuevaJornadas[]=new Jornada[jornadas.length+numNuevasJornadas];
+        //copiamos las jornadas existentes en el nuevo array de jornadas
+        for (int i=0;i<jornadas.length;i++){
+            nuevaJornadas[i]=jornadas[i];
+        }
+
+        for(int i=jornadas.length;i<nuevaJornadas.length;i++){
+            Jornada jornadaActual=new Jornada();
+            System.out.println("Cuantos partidos quieres poner?:");
+            int numPartidos=leerNumero();
+            esperarPulsacion();
+            //creamos un array de nuevos partidos con los partidos que queramos
+            Partido[] partidos=new Partido[numPartidos];
+            for (int j=0;j<numPartidos;j++){
+                //creamos un nuevo partido
+                //el for se encargará de rellenar el array de nuevos partidos con cada partido que creemos aqui
+                Partido partido=new Partido();
+                //mostramos los equipos disponibles para añadirlos al partido
+                for(int k=0;k<miLiga.getEquipos().length;k++){
+                    System.out.println("-"+k+miLiga.getEquipos()[k].getNombre());
+                }
+                System.out.println();
+                System.out.println("Seleccione un equipo Local de los disponibles:");
+                int seleccion=leerNumero();
+                partido.setLocal(miLiga.getEquipos()[seleccion]);
+                esperarPulsacion();
+
+                //mostramos los equipos disponibles para añadirlos al partido
+                System.out.println();
+                System.out.println("Seleccione un equipo Visitante de los disponibles");
+                seleccion=leerNumero();
+                partido.setVisitante(miLiga.getEquipos()[seleccion]);
+                esperarPulsacion();
+
+                //ahora mostramos los arbitros para que el usuario los añada al partido
+                limpiarPantalla();
+                System.out.println("Ahora el arbitro");
+                esperarPulsacion();
+                for (int l=0;l<miLiga.getArbitros().length;l++){
+                    System.out.println("-"+l+miLiga.getArbitros()[l].getNombre());
+                }
+                System.out.println("Escoja un arbitro para el partido de los disponibles");
+                seleccion=leerNumero();
+                partido.setArbitro(miLiga.getArbitros()[seleccion]);
+
+                System.out.println("Equipos y Arbitros añadidos correctamente");
+                System.out.println("Pulse Enter");
+                esperarPulsacion();
+
+                System.out.println("Quieres añadir los goles(1) o quieres que sea automático(2)?");
+                int opcionSwitch=leerNumero();
+                switch (opcionSwitch){
+                    case 1:
+                        System.out.println("Introduzca goles del equipo Local:");
+                        int gLocal=leerNumero();
+                        System.out.println("Introduzca goles del equipo Visitante");
+                        int gVisitante=leerNumero();
+                        partido.setgLocal(gLocal);
+                        partido.setgVisitante(gVisitante);
+                        break;
+
+                    case 2:
+                        int numero = (int) Math.floor(Math.random()*5);
+                        partido.setgLocal(numero);
+                        numero = (int) Math.floor(Math.random()*5);
+                        partido.setgVisitante(numero);
+                        break;
+
+                    default:
+                        System.out.println("Opcion no valida");
+                        break;
+                }
+                partidos[j]=partido;
+            }
+            nuevaJornadas[i]=jornadaActual;
+        }
+        miLiga.getCalendario().setJornadas(nuevaJornadas);
+
+    }
 
 
 
