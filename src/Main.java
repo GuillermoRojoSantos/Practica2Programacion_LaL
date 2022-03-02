@@ -3,26 +3,33 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
+        Scanner clasif= new Scanner (System.in);
         //Creamos una liga
         final String nombreLiga= "Liga de la L";
         final int equipos=20;
         final int edad=12;
-        final int JORNADASJUGADAS=38;
+        int JORNADASJUGADAS;
 
         Equipo[] misEquipos = crearEquipos(equipos, edad);
         Arbitro[] misArbitros= crearArbitros(equipos/2);
 
 
         Liga miLiga = new Liga(nombreLiga,misEquipos,misArbitros);
-        crearPartidosSilencioso(miLiga, JORNADASJUGADAS);
-        Clasificacion clasificacionLiga = new Clasificacion (miLiga.getEquipos(),miLiga.getCalendario());
+        // crearPartidosSilencioso(miLiga, JORNADASJUGADAS);
+
+        // Clasificacion clasificacionL
+
+
 
         imprimirMenu();
         int opcionMenu= sc.nextInt();
         while (opcionMenu!=10){
             switch (opcionMenu){
                 case 1:
+                    imprimirMenu2(miLiga);
+                    JORNADASJUGADAS=clasif.nextInt();
+                    crearPartidosSilencioso(miLiga, JORNADASJUGADAS);
+                    Clasificacion clasificacionLiga = new Clasificacion (miLiga.getEquipos(),miLiga.getCalendario());
                     System.out.println(miLiga.getClasificacion());
                     break;
                 case 2:
@@ -32,6 +39,9 @@ public class Main {
                 case 3:
                     añadirResultados(miLiga);
                     break;
+
+                case 4:
+                    System.out.println(miLiga.toString());
 
 
                 default:
@@ -56,6 +66,15 @@ public class Main {
         System.out.println("                                         10 Salir");
         System.out.println("*************************************************************************************************************");
     }
+    public static void imprimirMenu2(Liga miLiga){
+        System.out.println("*************************************************************************************************************");
+        System.out.println("*************************************** ¿ De cuantas jornadas quieres que sea la clasificación?************************************************");
+        System.out.println("***************************************  Actualmente hay:"+miLiga.getCalendario().getJornadas().length+" Jornadas actualemnte *****************");
+        System.out.println("                                         Introduce número:");
+
+
+
+    }
     private static void limpiarPantalla() {
         for (int i = 0 ; i < 10 ; i++)
         {
@@ -77,7 +96,7 @@ public class Main {
         return resultado;
     }
     /*Este método crea partidos para rellenar el calendario introducido sin mostrar el resultado final
-    * es decir, hay que pedirle a la liga despues de haber*/
+     * es decir, hay que pedirle a la liga despues de haber*/
     private static void crearPartidosSilencioso(Liga miLiga, int jornadasJugadas){
         Jornada [] jornadas = miLiga.getCalendario().getJornadas();
         int totalJornadas = jornadas.length;
@@ -96,7 +115,7 @@ public class Main {
             miLiga.getCalendario().setJornadas(jornadas);
             jornadas[i].terminar();
         }
-        System.out.println(miLiga.getCalendario());
+        //System.out.println(miLiga.getCalendario());
 
 
     }
@@ -107,9 +126,9 @@ public class Main {
         String[] nombres = {"Antonio", "Pepito", "Alejandra", "Ismael", "Hugo", "Oliver","Kalesi",
                 "Ingrid","Astrid","Indira","Jenny","Jessi","Vane","Joel","Bruno",
                 "Sasha","Billie","Masha","Pingu"};
-        String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Piqu�","Bale (lesionado)",
-                "Amunike","N'kono","Butrague�o","Sanch�s","Neymar","Batistuta","Maradona",
-                "Pel�","Beckenbauer"};
+        String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Piquďż˝","Bale (lesionado)",
+                "Amunike","N'kono","Butragueďż˝o","Sanchďż˝s","Neymar","Batistuta","Maradona",
+                "Pelďż˝","Beckenbauer"};
         String[] posiciones = {"Portero/a","Defensa","Centrocampista","Delantero/a"};
 
         //Estructura de Array de Jugadores
@@ -130,7 +149,7 @@ public class Main {
             String apellido2 = apellidos[numero];
             jug.setApellidos(apellido1+" "+apellido2);
 
-            //Posici�n
+            //Posiciďż˝n
             numero = (int) Math.floor(Math.random()*posiciones.length);
             String posicion = posiciones[numero];
             jug.setPosicion(posicion);
@@ -157,9 +176,9 @@ public class Main {
         String[] nombres = {"Antonio", "Pepito", "Alejandra", "Ismael", "Hugo", "Oliver","Kalesi",
                 "Ingrid","Astrid","Indira","Jenny","Jessi","Vane","Joel","Bruno",
                 "Sasha","Billie","Masha","Pingu"};
-        String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Piqué","Bale (lesionado)",
-                "Amunike","N'kono","Butragueño","Sanchís","Neymar","Batistuta","Maradona",
-                "Pelé","Beckenbauer"};
+        String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "PiquĂ©","Bale (lesionado)",
+                "Amunike","N'kono","ButragueĂ±o","SanchĂ­s","Neymar","Batistuta","Maradona",
+                "PelĂ©","Beckenbauer"};
         Arbitro[] arbitros=new Arbitro[numArbitros];
 
         for(int i=0; i<numArbitros; i++) {
@@ -192,9 +211,9 @@ public class Main {
     }
     private static Equipo[] crearEquipos(int numeroEquipos,int edad) {
 
-        String [] nombreBarrios = {"El Candado", "Huelin", "Tiro Pich�n", "Rinc�n de la Victoria", "La Rosaleda", "Torremolinos",
-                "Velez M�laga","Cerrado de Calderon", "El Puerto de la Torre", "Bresca", "Mezquitilla", "Teatinos", "Motril",
-                "Centro","Santa Paula", "El Palo", "Los Corazones", "Las Delicias", "Recogidas","Nueva M�laga", "Casas Blancas",
+        String [] nombreBarrios = {"El Candado", "Huelin", "Tiro Pichďż˝n", "Rincďż˝n de la Victoria", "La Rosaleda", "Torremolinos",
+                "Velez Mďż˝laga","Cerrado de Calderon", "El Puerto de la Torre", "Bresca", "Mezquitilla", "Teatinos", "Motril",
+                "Centro","Santa Paula", "El Palo", "Los Corazones", "Las Delicias", "Recogidas","Nueva Mďż˝laga", "Casas Blancas",
                 "La Palmilla","Los Asperones","Campanillas","La Corta"};
         String [] mascotas = {"Los Pollos", "Los Araclanes", "Los Limones", "Los Delfines", "Los Chanquetes", "Los Gatitos",
                 "Los Boquerones", "Los Toros", "Los Perritos", "Los Halcones", "Los Ornitorrincos", "Los Caracoles",
@@ -258,9 +277,9 @@ public class Main {
         String[] nombres = {"Antonio", "Pepito", "Alejandra", "Ismael", "Hugo", "Oliver","Kalesi",
                 "Ingrid","Astrid","Indira","Jenny","Jessi","Vane","Joel","Bruno",
                 "Sasha","Billie","Masha","Pingu"};
-        String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Piqu�","Bale (lesionado)",
-                "Amunike","N'kono","Butrague�o","Sanch�s","Neymar","Batistuta","Maradona",
-                "Pel�","Beckenbauer"};
+        String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Piquďż˝","Bale (lesionado)",
+                "Amunike","N'kono","Butragueďż˝o","Sanchďż˝s","Neymar","Batistuta","Maradona",
+                "Pelďż˝","Beckenbauer"};
         Entrenador entrenador = new Entrenador();
 
         //Nombre
@@ -294,9 +313,9 @@ public class Main {
         String[] nombres = {"Antonio", "Pepito", "Alejandra", "Ismael", "Hugo", "Oliver","Kalesi",
                 "Ingrid","Astrid","Indira","Jenny","Jessi","Vane","Joel","Bruno",
                 "Sasha","Billie","Masha","Pingu"};
-        String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "Piqué","Bale (lesionado)",
-                "Amunike","N'kono","Butragueño","Sanchís","Neymar","Batistuta","Maradona",
-                "Pelé","Beckenbauer"};
+        String[] apellidos = {"Messi", "Vinicius", "Cristiano", "Ronaldo", "PiquĂ©","Bale (lesionado)",
+                "Amunike","N'kono","ButragueĂ±o","SanchĂ­s","Neymar","Batistuta","Maradona",
+                "PelĂ©","Beckenbauer"};
         Arbitro arbitro = new Arbitro();
 
         //Nombre
@@ -340,11 +359,12 @@ public class Main {
             esperarPulsacion();
             //creamos un array de nuevos partidos con los partidos que queramos
             Partido[] partidos=new Partido[numPartidos];
+            jornadaActual.setPartidos(partidos);
             for (int j=0;j<numPartidos;j++){
                 //creamos un nuevo partido
                 //el for se encargará de rellenar el array de nuevos partidos con cada partido que creemos aqui
                 Partido partido=new Partido();
-                //mostramos los equipos disponibles para añadirlos al partido
+                //mostramos los equipos disponibles para aĂ±adirlos al partido
                 for(int k=0;k<miLiga.getEquipos().length;k++){
                     System.out.println("-"+k+miLiga.getEquipos()[k].getNombre());
                 }
@@ -372,11 +392,11 @@ public class Main {
                 seleccion=leerNumero();
                 partido.setArbitro(miLiga.getArbitros()[seleccion]);
 
-                System.out.println("Equipos y Arbitros añadidos correctamente");
+                System.out.println("Equipos y Arbitros aĂ±adidos correctamente");
                 System.out.println("Pulse Enter");
                 esperarPulsacion();
 
-                System.out.println("Quieres añadir los goles(1) o quieres que sea automático(2)?");
+                System.out.println("Quieres aĂ±adir los goles(1) o quieres que sea automático(2)?");
                 int opcionSwitch=leerNumero();
                 switch (opcionSwitch){
                     case 1:
@@ -399,11 +419,17 @@ public class Main {
                         System.out.println("Opcion no valida");
                         break;
                 }
+
                 partidos[j]=partido;
             }
+            jornadaActual.terminar();
             nuevaJornadas[i]=jornadaActual;
         }
-        miLiga.getCalendario().setJornadas(nuevaJornadas);
+
+        calendario.setJornadas(nuevaJornadas);
+        miLiga.setCalendario(calendario);
+        System.out.println("Cambios añadidos con éxito");
+        imprimirMenu();
 
     }
 
@@ -484,12 +510,12 @@ public class Main {
         return miLiga;
     }*/
 
-//falta acabarla
+    //falta acabarla
     //esta clase se usa para que el usuario pueda crear una liga desde cero
     private Liga crearLigaAMano(){
 
-       //"Creamos" el objeto de liga y a continuacion le añadiremos
-      // atributos poco a poco
+        //"Creamos" el objeto de liga y a continuacion le aĂ±adiremos
+        // atributos poco a poco
 
         //nombre Liga
         System.out.println("Introduzca nombre de la Liga");
