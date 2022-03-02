@@ -8,13 +8,15 @@ public class Main {
         final String nombreLiga= "Liga de la L";
         final int equipos=20;
         final int edad=12;
-        int JORNADASJUGADAS;
+        final int JORNADASJUGADAS=38;
 
         Equipo[] misEquipos = crearEquipos(equipos, edad);
         Arbitro[] misArbitros= crearArbitros(equipos/2);
 
 
         Liga miLiga = new Liga(nombreLiga,misEquipos,misArbitros);
+        crearPartidosSilencioso(miLiga, JORNADASJUGADAS);
+        Clasificacion clasificacionLiga = new Clasificacion (miLiga.getEquipos(),miLiga.getCalendario());
         // crearPartidosSilencioso(miLiga, JORNADASJUGADAS);
 
         // Clasificacion clasificacionL
@@ -26,10 +28,6 @@ public class Main {
         while (opcionMenu!=10){
             switch (opcionMenu){
                 case 1:
-                    imprimirMenu2(miLiga);
-                    JORNADASJUGADAS=clasif.nextInt();
-                    crearPartidosSilencioso(miLiga, JORNADASJUGADAS);
-                    Clasificacion clasificacionLiga = new Clasificacion (miLiga.getEquipos(),miLiga.getCalendario());
                     System.out.println(miLiga.getClasificacion());
                     break;
                 case 2:
